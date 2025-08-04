@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JustJapa - Smart Migration Platform</title>
+    <title>JustJapa - The Complete Migration Ecosystem</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -45,6 +45,50 @@
             width: 2px;
             background-color: var(--primary);
         }
+        
+        .phase-card {
+            background: linear-gradient(145deg, #ffffff, #f3f4f6);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+        
+        .phase-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-color: var(--primary);
+        }
+        
+        .ecosystem-flow {
+            background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, #10b981 100%);
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .pricing-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .pricing-card:hover::before {
+            left: 100%;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -80,8 +124,9 @@
         <div class="container mx-auto px-4 py-20 md:py-28">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Your Smart Migration Journey Starts Here</h1>
-                    <p class="text-xl mb-8 opacity-90">AI-powered platform to simplify global relocation with vetted agents, document tools, and end-to-end support.</p>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">The Complete Migration Ecosystem</h1>
+                    <p class="text-xl mb-4 opacity-90">From "I want to japa" to "I'm successfully settled"</p>
+                    <p class="text-lg mb-8 opacity-80">Everything you need to migrate successfully - planning, documents, visas, travel, jobs, and settlement support in one intelligent platform.</p>
                     <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
                         <button class="px-6 py-3 bg-white text-blue-600 font-medium rounded-lg hover:bg-gray-100 transition">Match with an Agent</button>
                         <button class="px-6 py-3 border border-white text-white font-medium rounded-lg hover:bg-white hover:bg-opacity-10 transition">Watch Demo</button>
@@ -94,6 +139,72 @@
                         <div class="relative bg-white rounded-2xl shadow-2xl overflow-hidden">
                             <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/acadf97a-4cf0-4432-9bd2-046d534b8c7f.png" alt="Dashboard preview showing migration progress tracker and agent matching interface with country flags" class="w-full">
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Migration Journey Flow -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Your Complete Migration Journey</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">AI-powered guidance through every step from planning to settlement</p>
+            </div>
+            
+            <!-- Journey Flow -->
+            <div class="relative">
+                <div class="ecosystem-flow h-2 rounded-full mb-8"></div>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 mx-auto mb-3 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-lightbulb text-blue-600 text-xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-sm">Discovery</h4>
+                        <p class="text-xs text-gray-600">"Where to go?"</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 mx-auto mb-3 bg-purple-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-route text-purple-600 text-xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-sm">Planning</h4>
+                        <p class="text-xs text-gray-600">AI Roadmap</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 mx-auto mb-3 bg-green-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-file-check text-green-600 text-xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-sm">Documents</h4>
+                        <p class="text-xs text-gray-600">Quality Assurance</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 mx-auto mb-3 bg-yellow-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-passport text-yellow-600 text-xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-sm">Visa Apps</h4>
+                        <p class="text-xs text-gray-600">Expert Agents</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 mx-auto mb-3 bg-indigo-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-plane text-indigo-600 text-xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-sm">Travel</h4>
+                        <p class="text-xs text-gray-600">Flight & Logistics</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 mx-auto mb-3 bg-pink-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-home text-pink-600 text-xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-sm">Arrival</h4>
+                        <p class="text-xs text-gray-600">Settlement Support</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 mx-auto mb-3 bg-emerald-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-trophy text-emerald-600 text-xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-sm">Thriving</h4>
+                        <p class="text-xs text-gray-600">Community & Growth</p>
                     </div>
                 </div>
             </div>
@@ -212,61 +323,317 @@
                         </div>
                     </div>
                     
-                    <!-- Tools Section -->
-                    <h2 class="text-2xl font-semibold mt-12 mb-6">Migration Tools</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <!-- Country Comparison -->
-                        <div class="bg-white border border-gray-200 rounded-lg p-5 hover:border-blue-500 transition feature-card">
-                            <div class="w-12 h-12 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center mb-3">
-                                <i class="fas fa-globe-americas text-xl"></i>
+                    <!-- Complete Ecosystem Phases -->
+                    <h2 class="text-3xl font-bold mt-12 mb-8 text-center">The Complete Migration Ecosystem</h2>
+                    <p class="text-gray-600 text-center mb-12 max-w-3xl mx-auto">8 comprehensive phases covering every aspect of your migration journey - from initial planning to successful settlement and community integration.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Phase 1: Planning & Discovery -->
+                        <div class="phase-card rounded-xl p-6">
+                            <div class="w-16 h-16 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mb-4">
+                                <i class="fas fa-compass text-2xl"></i>
                             </div>
-                            <h3 class="text-lg font-medium mb-2">Country Comparison</h3>
-                            <p class="text-gray-600 text-sm">Compare visa requirements, cost of living, and job markets across destinations.</p>
-                            <button class="mt-3 text-blue-600 text-sm font-medium hover:text-blue-800">Try Tool</button>
+                            <h3 class="text-xl font-semibold mb-3 text-blue-600">Phase 1: Discovery</h3>
+                            <h4 class="font-medium mb-2">Migration Planning</h4>
+                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                                <li>• Smart Migration Wizard</li>
+                                <li>• Country Intelligence Engine</li>
+                                <li>• AI Roadmap Builder</li>
+                                <li>• Budget & Timeline Planning</li>
+                            </ul>
+                            <button class="text-blue-600 text-sm font-medium hover:text-blue-800">Explore Phase →</button>
                         </div>
-                        
-                        <!-- AI Migration Assistant -->
-                        <div class="bg-white border border-gray-200 rounded-lg p-5 hover:border-blue-500 transition feature-card">
-                            <div class="w-12 h-12 rounded-lg bg-green-100 text-green-600 flex items-center justify-center mb-3">
-                                <i class="fas fa-robot text-xl"></i>
+
+                        <!-- Phase 2: Document Preparation -->
+                        <div class="phase-card rounded-xl p-6">
+                            <div class="w-16 h-16 rounded-xl bg-green-100 text-green-600 flex items-center justify-center mb-4">
+                                <i class="fas fa-file-check text-2xl"></i>
                             </div>
-                            <h3 class="text-lg font-medium mb-2">AI Migration Assistant</h3>
-                            <p class="text-gray-600 text-sm">Get personalized recommendations based on your profile and goals.</p>
-                            <button class="mt-3 text-blue-600 text-sm font-medium hover:text-blue-800">Start Chat</button>
+                            <h3 class="text-xl font-semibold mb-3 text-green-600">Phase 2: Documents</h3>
+                            <h4 class="font-medium mb-2">Quality Assurance</h4>
+                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                                <li>• Document Quality Checker</li>
+                                <li>• Template Library & Guides</li>
+                                <li>• AI Verification System</li>
+                                <li>• Translation & Notarization</li>
+                            </ul>
+                            <button class="text-green-600 text-sm font-medium hover:text-green-800">Explore Phase →</button>
                         </div>
-                        
-                        <!-- Roadmap Builder -->
-                        <div class="bg-white border border-gray-200 rounded-lg p-5 hover:border-blue-500 transition feature-card">
-                            <div class="w-12 h-12 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center mb-3">
-                                <i class="fas fa-map-marked-alt text-xl"></i>
+
+                        <!-- Phase 3: Visa Applications -->
+                        <div class="phase-card rounded-xl p-6">
+                            <div class="w-16 h-16 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center mb-4">
+                                <i class="fas fa-passport text-2xl"></i>
                             </div>
-                            <h3 class="text-lg font-medium mb-2">Roadmap Builder</h3>
-                            <p class="text-gray-600 text-sm">Create a step-by-step plan with deadlines and personalized tasks.</p>
-                            <button class="mt-3 text-blue-600 text-sm font-medium hover:text-blue-800">Build Plan</button>
+                            <h3 class="text-xl font-semibold mb-3 text-purple-600">Phase 3: Visa Apps</h3>
+                            <h4 class="font-medium mb-2">Expert Network</h4>
+                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                                <li>• Visa Application Suite</li>
+                                <li>• Agent Marketplace</li>
+                                <li>• Success Guarantee</li>
+                                <li>• Interview Preparation</li>
+                            </ul>
+                            <button class="text-purple-600 text-sm font-medium hover:text-purple-800">Explore Phase →</button>
                         </div>
-                        
-                        <!-- Document Toolkit -->
-                        <div class="bg-white border border-gray-200 rounded-lg p-5 hover:border-blue-500 transition feature-card">
-                            <div class="w-12 h-12 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center mb-3">
-                                <i class="fas fa-file-contract text-xl"></i>
+
+                        <!-- Phase 4: Travel & Logistics -->
+                        <div class="phase-card rounded-xl p-6">
+                            <div class="w-16 h-16 rounded-xl bg-yellow-100 text-yellow-600 flex items-center justify-center mb-4">
+                                <i class="fas fa-plane text-2xl"></i>
                             </div>
-                            <h3 class="text-lg font-medium mb-2">Document Toolkit</h3>
-                            <p class="text-gray-600 text-sm">Templates, checklists and automated verification for all required documents.</p>
-                            <button class="mt-3 text-blue-600 text-sm font-medium hover:text-blue-800">View Tools</button>
+                            <h3 class="text-xl font-semibold mb-3 text-yellow-600">Phase 4: Travel</h3>
+                            <h4 class="font-medium mb-2">Logistics & Booking</h4>
+                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                                <li>• Smart Flight Search</li>
+                                <li>• Travel Insurance</li>
+                                <li>• Accommodation Booking</li>
+                                <li>• Airport Assistance</li>
+                            </ul>
+                            <button class="text-yellow-600 text-sm font-medium hover:text-yellow-800">Explore Phase →</button>
+                        </div>
+
+                        <!-- Phase 5: Opportunities -->
+                        <div class="phase-card rounded-xl p-6">
+                            <div class="w-16 h-16 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4">
+                                <i class="fas fa-briefcase text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3 text-indigo-600">Phase 5: Opportunities</h3>
+                            <h4 class="font-medium mb-2">Jobs & Growth</h4>
+                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                                <li>• Global Jobs Board</li>
+                                <li>• Scholarship Database</li>
+                                <li>• Skills Development</li>
+                                <li>• Gig Economy Access</li>
+                            </ul>
+                            <button class="text-indigo-600 text-sm font-medium hover:text-indigo-800">Explore Phase →</button>
+                        </div>
+
+                        <!-- Phase 6: Community -->
+                        <div class="phase-card rounded-xl p-6">
+                            <div class="w-16 h-16 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center mb-4">
+                                <i class="fas fa-users text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3 text-pink-600">Phase 6: Community</h3>
+                            <h4 class="font-medium mb-2">Support Network</h4>
+                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                                <li>• Diaspora Network</li>
+                                <li>• Mentorship Matching</li>
+                                <li>• Peer Marketplace</li>
+                                <li>• Cultural Integration</li>
+                            </ul>
+                            <button class="text-pink-600 text-sm font-medium hover:text-pink-800">Explore Phase →</button>
+                        </div>
+
+                        <!-- Phase 7: Financial Services -->
+                        <div class="phase-card rounded-xl p-6">
+                            <div class="w-16 h-16 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4">
+                                <i class="fas fa-dollar-sign text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3 text-emerald-600">Phase 7: Financial</h3>
+                            <h4 class="font-medium mb-2">Money & Security</h4>
+                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                                <li>• Money Transfers</li>
+                                <li>• Proof of Funds</li>
+                                <li>• Fund My Japa</li>
+                                <li>• Escrow Protection</li>
+                            </ul>
+                            <button class="text-emerald-600 text-sm font-medium hover:text-emerald-800">Explore Phase →</button>
+                        </div>
+
+                        <!-- Phase 8: AI & Mobile -->
+                        <div class="phase-card rounded-xl p-6">
+                            <div class="w-16 h-16 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center mb-4">
+                                <i class="fas fa-robot text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3 text-orange-600">Phase 8: AI Platform</h3>
+                            <h4 class="font-medium mb-2">Intelligence & Mobile</h4>
+                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                                <li>• 24/7 AI Assistant</li>
+                                <li>• Predictive Analytics</li>
+                                <li>• Mobile-First Platform</li>
+                                <li>• Voice Commands</li>
+                            </ul>
+                            <button class="text-orange-600 text-sm font-medium hover:text-orange-800">Explore Phase →</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Pricing Section -->
+        <section class="mb-20 bg-gray-50 rounded-2xl p-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Three Clear Paths to Success</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Choose the option that best fits your needs and budget</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- DIY Option -->
+                <div class="pricing-card bg-white rounded-xl p-8 border border-gray-200 hover:border-blue-500 transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user-graduate text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">DIY with AI</h3>
+                        <p class="text-gray-600 mb-4">Perfect for confident, budget-conscious migrants</p>
+                        <div class="text-4xl font-bold text-blue-600">₦100K - ₦500K</div>
+                        <p class="text-sm text-gray-500">One-time fee (excluding Visa fees)</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-sm">Full AI Migration Assistant</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-sm">Document templates & verification</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-sm">Step-by-step guided workflows</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-sm">Community support</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-sm">Basic visa guarantee</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">Get Started</button>
+                </div>
+
+                <!-- Full Service Option -->
+                <div class="pricing-card bg-gradient-to-br from-purple-600 to-blue-600 text-white rounded-xl p-8 transform scale-105 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-yellow-400 text-yellow-900 px-4 py-1 rounded-full text-sm font-medium">MOST POPULAR</span>
+                    </div>
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-crown text-yellow-300 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Full Service</h3>
+                        <p class="text-blue-100 mb-4">Complete white-glove migration experience</p>
+                        <div class="text-4xl font-bold">₦1M - ₦10M</div>
+                        <p class="text-sm text-blue-200">One-time fee</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            <span class="text-sm">Everything in DIY Option</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            <span class="text-sm">Dedicated licensed agent</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            <span class="text-sm">Agent handles all paperwork</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            <span class="text-sm">Full visa guarantee</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            <span class="text-sm">Post-arrival support</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-white text-purple-600 py-3 rounded-lg hover:bg-gray-100 transition font-semibold">Get Expert Help</button>
+                </div>
+
+                <!-- Pro Subscription -->
+                <div class="pricing-card bg-white rounded-xl p-8 border border-gray-200 hover:border-emerald-500 transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-emerald-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-rocket text-emerald-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">JustJapa Pro</h3>
+                        <p class="text-gray-600 mb-4">Ultimate migration experience</p>
+                        <div class="text-4xl font-bold text-emerald-600">₦100K</div>
+                        <p class="text-sm text-gray-500">/month (excluding Visa fees)</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-sm">One-on-one migration coaching</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-sm">Advanced AI with predictions</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-sm">Priority 24/7 support</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-sm">Exclusive opportunities</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-sm">VIP travel coordination</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-emerald-600 text-white py-3 rounded-lg hover:bg-emerald-700 transition">Start Now</button>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <p class="text-gray-600 text-sm">All plans include our <strong>Visa Success Guarantee</strong> and scam protection</p>
+            </div>
+        </section>
         
-        <!-- Phase 2 Features -->
+        <!-- Why Choose JustJapa -->
         <section class="mb-20" id="features">
-            <h2 class="text-2xl font-bold text-center mb-4">Advanced Features Coming Soon</h2>
-            <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">We're constantly improving your migration experience with powerful new tools</p>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Why JustJapa is Different</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Unlike traditional migration services that only handle pieces of your journey, we're your complete migration ecosystem</p>
+            </div>
+            
+            <!-- Comparison Table -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x">
+                    <div class="p-8 text-center bg-red-50">
+                        <h3 class="text-xl font-bold text-red-600 mb-4">❌ Traditional Migration</h3>
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li>Scam agents and unreliable services</li>
+                            <li>Information scattered across platforms</li>
+                            <li>High failure rates due to poor preparation</li>
+                            <li>Hidden costs and surprise fees</li>
+                            <li>Poor support when you need help</li>
+                            <li>One-size-fits-all generic advice</li>
+                        </ul>
+                    </div>
+                    <div class="p-8 text-center bg-green-50">
+                        <h3 class="text-xl font-bold text-green-600 mb-4">✅ JustJapa Solution</h3>
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li>AI-verified agents with escrow protection</li>
+                            <li>Single source of truth with AI guidance</li>
+                            <li>Success guarantee with money-back policy</li>
+                            <li>Transparent pricing with no hidden costs</li>
+                            <li>24/7 AI + human support</li>
+                            <li>AI-personalized journey for each user</li>
+                        </ul>
+                    </div>
+                    <div class="p-8 text-center bg-blue-50">
+                        <h3 class="text-xl font-bold text-blue-600 mb-4">🚀 Our Advantage</h3>
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li><strong>85%</strong> visa success rate</li>
+                            <li><strong>500+</strong> vetted agents</li>
+                            <li><strong>24/7</strong> AI assistance</li>
+                            <li><strong>8 phases</strong> complete coverage</li>
+                            <li><strong>$50M+</strong> in escrow protection</li>
+                            <li><strong>100%</strong> scam protection</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Smart Agent Matching -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
                             <i class="fas fa-people-arrows text-2xl"></i>
@@ -281,10 +648,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 
                 <!-- Money Transfer -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-green-100 text-green-600 flex items-center justify-center">
                             <i class="fas fa-money-bill-transfer text-2xl"></i>
@@ -300,10 +667,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 
                 <!-- AI Analytics -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center">
                             <i class="fas fa-brain text-2xl"></i>
@@ -318,10 +685,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 
                 <!-- Diaspora Network -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center">
                             <i class="fas fa-hands-helping text-2xl"></i>
@@ -337,9 +704,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Diaspora Network -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
                             <i class="fas fa-briefcase text-2xl"></i>
@@ -354,9 +721,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Diaspora Network -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-gray-100 text-gray-600 flex items-center justify-center">
                             <i class="fas fa-graduation-cap text-2xl"></i>
@@ -371,9 +738,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Diaspora Network -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center">
                             <i class="fas fa-plane text-2xl"></i>
@@ -388,9 +755,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Diaspora Network -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-green-100 text-green-600 flex items-center justify-center">
                             <i class="fas fa-shield-alt text-2xl"></i>
@@ -405,9 +772,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Diaspora Network -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-red-100 text-red-600 flex items-center justify-center">
                             <i class="fas fa-map-marker-alt text-2xl"></i>
@@ -422,9 +789,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Diaspora Network -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
                             <i class="fas fa-book text-2xl"></i>
@@ -439,7 +806,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
         
