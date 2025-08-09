@@ -24,3 +24,7 @@ lerna-debug.log*
 .tmp
 claude/
 CONTRIBUTING.md
+STRATEGIC_ANALYSIS_COMPARISON.md
+context/
+.next/
+/out/
