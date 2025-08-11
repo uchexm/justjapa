@@ -1,14 +1,10 @@
 import { JsonLd } from "@/components/JsonLd";
 import { getOrganizationJsonLd, getWebsiteJsonLd } from "@/lib/seo";
 import { Hero } from "@/components/sections/Hero";
-import { Features } from "@/components/sections/Features";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { JapaGoals } from "@/components/sections/JapaGoals";
 import { JapaFam } from "@/components/sections/JapaFam";
 import { JoinWaitlist } from "@/components/sections/JoinWaitlist";
-import { Screenshots } from "@/components/sections/Screenshots";
-import { FAQ } from "@/components/sections/FAQ";
-import { CTA } from "@/components/sections/CTA";
 
 export default function Home() {
   const org = getOrganizationJsonLd();

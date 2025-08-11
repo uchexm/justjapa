@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export function JoinWaitlist() {
@@ -151,22 +151,58 @@ export function JoinWaitlist() {
         <div className="relative mx-auto h-full flex items-center justify-center">
           <div className="text-center">
             {/* Headline responsive */}
-            <h2 className="mb-6 sm:mb-8 text-blue-600">
-              <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-medium leading-tight">
+            <h2 className="mb-6 sm:mb-8 text-blue-600 leading-tight">
+              <span 
+                className="font-medium"
+                style={{
+                  fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif',
+                  fontWeight: 500,
+                  fontSize: 'clamp(32px, 8vw, 88.39px)',
+                  lineHeight: '84.64px',
+                  letterSpacing: '-0.06em',
+                  textAlign: 'center'
+                }}
+              >
                 Join
               </span>{" "}
               <span 
-                className="italic text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl leading-tight"
-                style={{ fontFamily: 'Cormorant Garamond' }}
+                className="italic font-bold"
+                style={{ 
+                  fontFamily: 'var(--font-cormorant-garamond), Cormorant Garamond, serif',
+                  fontWeight: 700,
+                  fontStyle: 'italic',
+                  fontSize: 'clamp(38px, 9vw, 100px)',
+                  lineHeight: '84.64px',
+                  letterSpacing: '-0.06em',
+                  textAlign: 'center'
+                }}
               >
                 The
               </span>{" "}
-              <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-medium leading-tight">
+              <span 
+                className="font-medium"
+                style={{
+                  fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif',
+                  fontWeight: 500,
+                  fontSize: 'clamp(32px, 8vw, 88.39px)',
+                  lineHeight: '84.64px',
+                  letterSpacing: '-0.06em',
+                  textAlign: 'center'
+                }}
+              >
                 App
               </span>{" "}
               <span 
-                className="italic text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl leading-tight"
-                style={{ fontFamily: 'Cormorant Garamond' }}
+                className="italic font-bold"
+                style={{ 
+                  fontFamily: 'var(--font-cormorant-garamond), Cormorant Garamond, serif',
+                  fontWeight: 700,
+                  fontStyle: 'italic',
+                  fontSize: 'clamp(38px, 9vw, 100px)',
+                  lineHeight: '84.64px',
+                  letterSpacing: '-0.06em',
+                  textAlign: 'center'
+                }}
               >
                 Waitlist
               </span>

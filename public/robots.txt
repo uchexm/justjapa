@@ -1,9 +1,17 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /offline
+
+# Googlebot
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /offline
 
 # Host
-Host: http://localhost:3000
+Host: https://justjapa.com
 
 # Sitemaps
-Sitemap: http://localhost:3000/sitemap.xml
+Sitemap: https://justjapa.com/sitemap.xml

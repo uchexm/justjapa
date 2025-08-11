@@ -10,13 +10,37 @@ export function HamburgerMenu({ onClick, className = "" }: HamburgerMenuProps) {
   return (
     <button
       onClick={onClick}
-      className={`p-2 hover:bg-gray-100 rounded-lg btn-hover-simple lg:hidden ${className}`}
+      className={`p-2 hover:opacity-80 transition-opacity lg:hidden ${className}`}
       aria-label="Open navigation menu"
+      style={{ background: 'none', border: 'none' }}
     >
-      {/* Using your provided hamburger SVG design but simplified for mobile */}
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
+      {/* Three horizontal lines with exact Figma specifications */}
+      <div className="flex flex-col space-y-1">
+        <div 
+          style={{
+            width: '30px',
+            height: '1.5px',
+            backgroundColor: '#000000',
+            borderRadius: '1.5px'
+          }}
+        ></div>
+        <div 
+          style={{
+            width: '30px',
+            height: '1.5px',
+            backgroundColor: '#000000',
+            borderRadius: '1.5px'
+          }}
+        ></div>
+        <div 
+          style={{
+            width: '30px',
+            height: '1.5px',
+            backgroundColor: '#000000',
+            borderRadius: '1.5px'
+          }}
+        ></div>
+      </div>
     </button>
   );
 }

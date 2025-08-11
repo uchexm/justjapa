@@ -53,22 +53,54 @@ export function JapaGoals() {
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-12 sm:mb-16 gap-6">
           {/* Title */}
-          <h2 className="text-black text-center lg:text-left text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal leading-tight">
-            What's Your{' '}
+          <h2 className="text-black text-center lg:text-left leading-tight">
             <span 
-              className="italic font-normal"
-              style={{ fontFamily: 'Cormorant Garamond' }}
+              className="font-medium"
+              style={{
+                fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif',
+                fontWeight: 500,
+                fontSize: 'clamp(32px, 8vw, 88.39px)',
+                lineHeight: '84.64px',
+                letterSpacing: '-0.06em',
+                textAlign: 'center'
+              }}
+            >
+              What&apos;s Your{' '}
+            </span>
+            <span 
+              className="italic font-semibold"
+              style={{ 
+                fontFamily: 'var(--font-cormorant-garamond), Cormorant Garamond, serif',
+                fontWeight: 600,
+                fontStyle: 'italic',
+                fontSize: 'clamp(40px, 10vw, 110px)',
+                lineHeight: '84.64px',
+                letterSpacing: '-0.06em',
+                textAlign: 'center'
+              }}
             >
               Japa
             </span>
-            {' '}Goal?
+            <span 
+              className="font-medium"
+              style={{
+                fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif',
+                fontWeight: 500,
+                fontSize: 'clamp(32px, 8vw, 88.39px)',
+                lineHeight: '84.64px',
+                letterSpacing: '-0.06em',
+                textAlign: 'center'
+              }}
+            >
+              {' '}Goal?
+            </span>
           </h2>
           
           {/* Notification text */}
           <div className="flex-shrink-0 text-center lg:text-right">
             <span className="text-black text-base sm:text-lg lg:text-xl xl:text-2xl font-medium leading-relaxed">
-              We'll personalize your experience<br className="hidden sm:block" />
-              <span className="sm:hidden"> </span>based on where you're headed.
+              We&apos;ll personalize your experience<br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>based on where you&apos;re headed.
             </span>
           </div>
         </div>

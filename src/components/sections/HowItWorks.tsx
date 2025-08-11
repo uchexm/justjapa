@@ -33,13 +33,33 @@ export function HowItWorks() {
       <div className="container-consistent">
         {/* Title */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-          <h2 className="text-black text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight">
-            How it{' '}
+          <h2 className="text-black text-center leading-tight">
             <span 
-              className="italic font-medium"
-              style={{ fontFamily: 'Cormorant Garamond' }}
-            > 
-              works
+              className="font-medium"
+              style={{
+                fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif',
+                fontWeight: 500,
+                fontSize: 'clamp(32px, 8vw, 88.39px)',
+                lineHeight: '84.64px',
+                letterSpacing: '-0.06em',
+                textAlign: 'center'
+              }}
+            >
+              How it{' '}
+            </span>
+            <span 
+              className="italic font-bold"
+              style={{ 
+                fontFamily: 'var(--font-cormorant-garamond), Cormorant Garamond, serif',
+                fontWeight: 700,
+                fontStyle: 'italic',
+                fontSize: 'clamp(40px, 10vw, 107.66px)',
+                lineHeight: '84.64px',
+                letterSpacing: '-0.06em',
+                textAlign: 'center'
+              }}
+            >
+              Works
             </span>
           </h2>
         </div>
@@ -86,7 +106,7 @@ export function HowItWorks() {
               <div className="mt-auto">
                 <a 
                   href="#" 
-                  className="text-gray-400 link-hover-simple text-sm sm:text-base"
+                  className="text-gray-400 link-hover-simple text-sm sm:text-base underline"
                 >
                   Learn more
                 </a>

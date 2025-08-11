@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export function Footer() {
   return (
     <footer className="bg-white py-8 sm:py-12">
@@ -7,39 +9,39 @@ export function Footer() {
           <div className="w-full max-w-4xl">
             {/* Mobile Layout - Stack vertically */}
             <nav className="flex flex-col sm:hidden space-y-4 text-center">
-              <a href="/" className="text-black link-hover-simple text-lg font-normal py-2">
+              <Link href="/" className="text-black link-hover-simple text-lg font-normal py-2">
                 Home
-              </a>
-              <a href="/coming-soon" className="text-black link-hover-simple text-lg font-normal py-2">
+              </Link>
+              <Link href="/coming-soon" className="text-black link-hover-simple text-lg font-normal py-2">
                 How It Works
-              </a>
-              <a href="/coming-soon" className="text-black link-hover-simple text-lg font-normal py-2">
+              </Link>
+              <Link href="/coming-soon" className="text-black link-hover-simple text-lg font-normal py-2">
                 Blog
-              </a>
-              <a href="/coming-soon" className="text-black link-hover-simple text-lg font-normal py-2">
+              </Link>
+              <Link href="/coming-soon" className="text-black link-hover-simple text-lg font-normal py-2">
                 FAQ
-              </a>
-              <a href="/coming-soon" className="text-black link-hover-simple text-lg font-normal py-2">
+              </Link>
+              <Link href="/coming-soon" className="text-black link-hover-simple text-lg font-normal py-2">
                 Privacy Policy
-              </a>
-              <a href="/coming-soon" className="text-black link-hover-simple text-lg font-normal py-2">
+              </Link>
+              <Link href="/coming-soon" className="text-black link-hover-simple text-lg font-normal py-2">
                 Terms
-              </a>
+              </Link>
             </nav>
             
             {/* Desktop Layout - Horizontal with separators */}
             <nav className="hidden sm:flex justify-center items-center text-center text-base lg:text-lg xl:text-2xl font-normal text-black flex-wrap">
-              <a href="/" className="link-hover-simple px-2">Home</a>
+              <Link href="/" className="link-hover-simple px-2">Home</Link>
               <span className="mx-2 lg:mx-4 text-gray-400">|</span>
-              <a href="/coming-soon" className="link-hover-simple px-2">How It Works</a>
+              <Link href="/coming-soon" className="link-hover-simple px-2">How It Works</Link>
               <span className="mx-2 lg:mx-4 text-gray-400">|</span>
-              <a href="/coming-soon" className="link-hover-simple px-2">Blog</a>
+              <Link href="/coming-soon" className="link-hover-simple px-2">Blog</Link>
               <span className="mx-2 lg:mx-4 text-gray-400">|</span>
-              <a href="/coming-soon" className="link-hover-simple px-2">FAQ</a>
+              <Link href="/coming-soon" className="link-hover-simple px-2">FAQ</Link>
               <span className="mx-2 lg:mx-4 text-gray-400">|</span>
-              <a href="/coming-soon" className="link-hover-simple px-2">Privacy Policy</a>
+              <Link href="/coming-soon" className="link-hover-simple px-2">Privacy Policy</Link>
               <span className="mx-2 lg:mx-4 text-gray-400">|</span>
-              <a href="/coming-soon" className="link-hover-simple px-2">Terms</a>
+              <Link href="/coming-soon" className="link-hover-simple px-2">Terms</Link>
             </nav>
           </div>
 

@@ -1,5 +1,5 @@
 "use client";
-import { JoinWaitlist } from "@/components/sections/JoinWaitlist";
+import Link from 'next/link';
 
 export default function SuccessPage() {
   return (
@@ -35,7 +35,7 @@ export default function SuccessPage() {
                 letterSpacing: '-6%'
               }}
             >
-              You're
+              You&apos;re
             </span> Welcome
           </h1>
           
@@ -50,13 +50,13 @@ export default function SuccessPage() {
               textAlign: 'center'
             }}
           >
-            We’ve been waiting for you to join the others, but <br/>
-            you’re here now, and you’re family, lets japa together
+            We&apos;ve been waiting for you to join the others, but <br/>
+            you&apos;re here now, and you&apos;re family, lets japa together
           </p>
           <div className="flex justify-center mt-8">
-            <button 
-              onClick={() => window.location.href = '/'}
-              className="cursor-pointer"
+            <Link 
+              href="/"
+              className="cursor-pointer btn-hover-simple inline-block"
             >
               <svg width="303" height="82" viewBox="0 0 303 82" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect y="0.124268" width="302.452" height="81.0455" rx="40.5227" fill="#0178FF"/>
@@ -70,7 +70,7 @@ export default function SuccessPage() {
                 </clipPath>
                 </defs>
               </svg>
-            </button>
+            </Link>
           </div>
 
         </div>

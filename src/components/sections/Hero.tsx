@@ -19,24 +19,62 @@ export function Hero() {
       
       <div className="relative z-10 container-consistent py-8 sm:py-12">
         <div className="text-center max-w-4xl mx-auto">
-          {/* Main Headline */}
+          {/* Main Headline - Figma specifications */}
           <h1 className="text-black text-center mb-6 sm:mb-8">
-            <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium leading-tight">
+            <span 
+              className="block font-semibold leading-none"
+              style={{
+                fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif',
+                fontWeight: 600,
+                fontSize: 'clamp(32px, 8vw, 110.83px)',
+                lineHeight: '106.13px',
+                letterSpacing: '-0.06em',
+                textAlign: 'center'
+              }}
+            >
               Your{' '}
               <span 
                 className="italic font-bold"
-                style={{ fontFamily: 'Cormorant Garamond' }}
+                style={{ 
+                  fontFamily: 'var(--font-cormorant-garamond), Cormorant Garamond, serif',
+                  fontWeight: 700,
+                  fontStyle: 'italic',
+                  fontSize: 'clamp(40px, 10vw, 134.99px)',
+                  lineHeight: '106.13px',
+                  letterSpacing: '-0.06em'
+                }}
               >
                 Migration
               </span>
             </span>
-            <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium leading-tight">
+            <span 
+              className="block font-semibold leading-none"
+              style={{
+                fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif',
+                fontWeight: 600,
+                fontSize: 'clamp(32px, 8vw, 110.83px)',
+                lineHeight: '106.13px',
+                letterSpacing: '-0.06em',
+                textAlign: 'center'
+              }}
+            >
               Companion
             </span>
           </h1>
           
           {/* Subheadline */}
-          <p className="text-black text-center mx-auto mb-8 sm:mb-10 text-sm sm:text-lg md:text-xl lg:text-2xl font-light leading-relaxed max-w-2xl">
+          <p 
+            className="mx-auto mb-8 sm:mb-10 max-w-2xl"
+            style={{
+              fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif',
+              fontWeight: 500,
+              fontSize: 'clamp(18px, 2.5vw, 24px)',
+              lineHeight: '32px',
+              letterSpacing: '-0.02em',
+              textAlign: 'center',
+              color: '#000000'
+            }}
+          >
             Powered by AI. Backed by experts. Built for Nigerians and
             <span className="hidden sm:inline"> Africans ready to Japa — safely, affordably, and successfully.</span>
             <span className="sm:hidden block mt-2">Africans ready to Japa — safely, affordably, and successfully.</span>
@@ -56,24 +94,24 @@ export function Hero() {
                   className="w-12 h-12 sm:w-16 sm:h-16 lg:w-[71px] lg:h-[71px] rounded-full overflow-hidden border-2 border-white bg-cover" 
                   style={{
                     backgroundImage: 'url(/profile1.jpg)',
-                    backgroundPosition: 'center top',
-                    backgroundSize: 'cover'
+                    backgroundPosition: 'center 35%',
+                    backgroundSize: '130%'
                   }} 
                 />
                 <div 
                   className="w-12 h-12 sm:w-16 sm:h-16 lg:w-[71px] lg:h-[71px] rounded-full overflow-hidden border-2 border-white bg-cover" 
                   style={{
                     backgroundImage: 'url(/profile2.jpg)',
-                    backgroundPosition: 'center top',
-                    backgroundSize: 'cover'
+                    backgroundPosition: 'center 35%',
+                    backgroundSize: '130%'
                   }} 
                 />
                 <div 
                   className="w-12 h-12 sm:w-16 sm:h-16 lg:w-[71px] lg:h-[71px] rounded-full overflow-hidden border-2 border-white bg-cover" 
                   style={{
                     backgroundImage: 'url(/profile3.jpg)',
-                    backgroundPosition: 'center top',
-                    backgroundSize: 'cover'
+                    backgroundPosition: 'center 35%',
+                    backgroundSize: '130%'
                   }} 
                 />
               </div>

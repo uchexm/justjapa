@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { Logo } from "@/components/Logo";
 import { JoinNowBlueButton } from "@/components/JoinNowBlueButton";
 import { HamburgerMenu } from "@/components/HamburgerMenu";
@@ -15,42 +16,61 @@ export function Header() {
     }
   };
 
+  const navLinkStyle = {
+    color: '#000000',
+    fontFamily: 'var(--font-work-sans), Work Sans, sans-serif',
+    fontWeight: 400,
+    fontSize: '30.19px',
+    lineHeight: '43.12px',
+    letterSpacing: '-0.04em'
+  };
+
   return (
     <>
-      <header className="w-full sticky top-0 z-40 bg-white shadow-sm">
-        <div className="container-consistent">
-          <div className="flex items-center justify-between h-16 sm:h-20 lg:h-[130px]">
-            {/* Logo */}
-            <div className="flex-shrink-0">
+      <header className="w-full sticky top-0 z-40 bg-white">
+        <div className="max-w-[1593px] mx-auto px-4 sm:px-6 lg:px-[68px]">
+          <div 
+            className="flex items-center justify-between bg-white px-4 sm:px-6 lg:px-8 py-3 lg:py-4 mt-4 lg:mt-[38px]"
+            style={{ minHeight: '80px', height: 'auto' }}
+          >
+            {/* Logo - positioned according to Figma */}
+            <div className="flex-shrink-0" style={{ marginLeft: '0px' }}>
               <Logo />
             </div>
             
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
-              <a 
+            {/* Desktop Navigation - Work Sans font with specific spacing */}
+            <nav 
+              className="hidden lg:flex items-center"
+              style={{ gap: '50px' }}
+            >
+              <Link 
                 href="/" 
-                className="text-gray-700 nav-hover-simple text-lg xl:text-2xl font-normal"
+                className="hover:text-gray-600 transition-colors"
+                style={navLinkStyle}
               >
                 Home
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="/coming-soon" 
-                className="text-gray-700 nav-hover-simple text-lg xl:text-2xl font-normal"
+                className="hover:text-gray-600 transition-colors"
+                style={navLinkStyle}
               >
                 About
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="/coming-soon" 
-                className="text-gray-700 nav-hover-simple text-lg xl:text-2xl font-normal"
+                className="hover:text-gray-600 transition-colors"
+                style={navLinkStyle}
               >
                 Contact
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="/coming-soon" 
-                className="text-gray-700 nav-hover-simple text-lg xl:text-2xl font-normal"
+                className="hover:text-gray-600 transition-colors"
+                style={navLinkStyle}
               >
-                FAQ
-              </a>
+                Faq
+              </Link>
             </nav>
             
             {/* Desktop CTA Button */}
@@ -59,9 +79,11 @@ export function Header() {
             </div>
             
             {/* Mobile Hamburger Menu */}
-            <HamburgerMenu 
-              onClick={() => setIsMobileMenuOpen(true)}
-            />
+            <div className="lg:hidden">
+              <HamburgerMenu 
+                onClick={() => setIsMobileMenuOpen(true)}
+              />
+            </div>
           </div>
         </div>
       </header>

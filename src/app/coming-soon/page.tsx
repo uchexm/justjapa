@@ -1,5 +1,6 @@
 "use client";
 import { JoinWaitlist } from "@/components/sections/JoinWaitlist";
+import Link from 'next/link';
 
 export default function ComingSoonPage() {
   return (
@@ -49,13 +50,13 @@ export default function ComingSoonPage() {
               textAlign: 'center'
             }}
           >
-            We're working on something amazing for you. <br />
+            We&apos;re working on something amazing for you. <br />
             Join our waitlist to be the first to know when we launch!
           </p>
           <div className="flex justify-center mt-8">
-            <button 
-              onClick={() => window.location.href = '/'}
-              className="cursor-pointer hover:opacity-90 transition-opacity"
+            <Link 
+              href="/"
+              className="cursor-pointer hover:opacity-90 transition-opacity inline-block"
             >
               <svg width="303" height="82" viewBox="0 0 303 82" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect y="0.124268" width="302.452" height="81.0455" rx="40.5227" fill="#0178FF"/>
@@ -69,7 +70,7 @@ export default function ComingSoonPage() {
                 </clipPath>
                 </defs>
               </svg>
-            </button>
+            </Link>
           </div>
 
         </div>

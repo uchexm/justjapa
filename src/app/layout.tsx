@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import { Analytics } from "@vercel/analytics/react";
-import { DM_Sans, Geist_Mono } from "next/font/google";
+import { DM_Sans, Geist_Mono, Work_Sans, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -19,6 +19,21 @@ const dmSans = DM_Sans({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const workSans = Work_Sans({
+  variable: "--font-work-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-cormorant-garamond",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -127,7 +142,7 @@ export default function RootLayout({
         <StructuredData />
         <SEOHead />
       </head>
-      <body className={`${dmSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning>
+      <body className={`${dmSans.variable} ${geistMono.variable} ${workSans.variable} ${cormorantGaramond.variable} antialiased`} suppressHydrationWarning>
         <Suspense fallback={null}>
           <DesignOverlay />
         </Suspense>
