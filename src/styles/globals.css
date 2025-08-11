@@ -1,0 +1,567 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --background: #ffffff;
+    --foreground: #0a0a0a;
+    /* JustJapa Brand Colors - Exact Figma Values */
+    --color-primary: #0053db; /* Figma Blue1 */
+    --color-primary-foreground: #ffffff;
+    --color-secondary: #ff4c00; /* Figma Orange1 */
+    --color-secondary-foreground: #ffffff;
+    --color-accent: #0ea5e9;
+    --color-muted: #f5f5f5;
+    --color-border: #e5e5e5;
+    --color-text-primary: #1f2937;
+    --color-text-secondary: #6b7280;
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-primary: var(--color-primary);
+    --color-primary-foreground: var(--color-primary-foreground);
+    --color-secondary: var(--color-secondary);
+    --color-secondary-foreground: var(--color-secondary-foreground);
+    --color-accent: var(--color-accent);
+    --color-muted: var(--color-muted);
+    --color-border: var(--color-border);
+    --color-text-primary: var(--color-text-primary);
+    --color-text-secondary: var(--color-text-secondary);
+    --font-sans: var(--font-dm-sans);
+    --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
+}
+
+body {
+    background: var(--background);
+    color: var(--foreground);
+}
+
+/* Better Sized Button Specifications */
+.button-primary {
+    @apply inline-flex items-center justify-center transition-all duration-200;
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    width: 220px;
+    height: 70px;
+    border-radius: 35px;
+    font-family: var(--font-dm-sans);
+    font-weight: 500;
+    font-size: 18px;
+    padding: 18px 32px;
+}
+
+.button-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.button-secondary {
+    @apply inline-flex items-center justify-center transition-all duration-200;
+    background: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+    width: 220px;
+    height: 70px;
+    border-radius: 35px;
+    font-family: var(--font-dm-sans);
+    font-weight: 500;
+    font-size: 18px;
+    padding: 18px 32px;
+}
+
+.button-secondary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.input {
+    @apply rounded-md border px-4 py-3 text-sm;
+    border-color: var(--color-border);
+}
+
+.card {
+    @apply rounded-lg border bg-white;
+    border-color: var(--color-border);
+}
+
+.bg-grid-pattern {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* Mobile-first optimizations */
+@media (max-width: 640px) {
+    .button-primary,
+    .button-secondary {
+        width: 100%;
+        max-width: 280px;
+        height: 56px;
+        font-size: 16px;
+    }
+
+    .bg-grid-pattern {
+        background-size: 15px 15px;
+    }
+
+    /* Ensure proper spacing on small screens */
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .button-primary,
+    .button-secondary {
+        width: 200px;
+        height: 60px;
+        font-size: 17px;
+    }
+}
+
+/* Touch targets for mobile */
+@media (max-width: 768px) {
+    button,
+    a[role="button"],
+    input[type="submit"] {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Improve touch target spacing */
+    nav a {
+        padding: 12px;
+        margin: 4px;
+    }
+
+    /* Ensure text is readable on mobile */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        line-height: 1.2;
+    }
+
+    p {
+        line-height: 1.6;
+    }
+}
+
+/* Hide scrollbars on mobile when not needed */
+@media (max-width: 768px) {
+    .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* Responsive font scaling */
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 769px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Focus states for accessibility */
+*:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+button:focus,
+a:focus,
+input:focus,
+textarea:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Mobile navigation improvements */
+@media (max-width: 1023px) {
+    .mobile-nav-open {
+        overflow: hidden;
+    }
+}
+
+/* Consistent container utilities */
+.section-container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1560px;
+}
+
+.section-padding {
+    @apply py-16 sm:py-20;
+}
+
+/* Ensure all sections align properly */
+section {
+    width: 100%;
+}
+
+/* Container spacing consistency */
+.container-consistent {
+    max-width: 1560px; /* Custom max-width */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+}
+
+@media (min-width: 640px) {
+    .container-consistent {
+        padding-left: 1.5rem; /* sm:px-6 */
+        padding-right: 1.5rem; /* sm:px-6 */
+    }
+}
+
+@media (min-width: 1024px) {
+    .container-consistent {
+        padding-left: 2rem; /* lg:px-8 */
+        padding-right: 2rem; /* lg:px-8 */
+    }
+}
+
+/* Enhanced Button Hover Effects */
+.btn-hover-simple {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+}
+
+.btn-hover-simple:hover {
+    opacity: 0.9;
+    transform: translateY(-2px) scale(1.02);
+    filter: brightness(1.05);
+}
+
+.btn-hover-simple:active {
+    transform: translateY(0) scale(0.98);
+    transition-duration: 0.1s;
+}
+
+/* Enhanced Link Hover with Color Transition */
+.link-hover-simple {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.link-hover-simple:hover {
+    color: #0178ff;
+    transform: translateY(-1px);
+}
+
+.link-hover-simple:active {
+    transform: translateY(0);
+    transition-duration: 0.1s;
+}
+
+/* Enhanced Navigation Link Hover with Underline Effect */
+.nav-hover-simple {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.nav-hover-simple::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 50%;
+    background-color: #0178ff;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+}
+
+.nav-hover-simple:hover {
+    color: #0178ff;
+    transform: translateY(-1px);
+}
+
+.nav-hover-simple:hover::after {
+    width: 100%;
+}
+
+/* Enhanced Icon Hover with Pulse Effect */
+.icon-hover-simple {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(1);
+}
+
+.icon-hover-simple:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+.icon-hover-simple:hover svg {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Special hover effect for form submit buttons */
+.btn-submit-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-submit-hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-submit-hover:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(1, 120, 255, 0.3);
+}
+
+.btn-submit-hover:hover::before {
+    left: 100%;
+}
+
+.btn-submit-hover:active {
+    transform: scale(0.95);
+    transition-duration: 0.1s;
+}
+
+/* Special hover effect for hero CTA buttons */
+.btn-hero-cta {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-hero-cta::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.btn-hero-cta:hover {
+    transform: translateY(-3px) scale(1.05);
+    filter: brightness(1.1);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.btn-hero-cta:hover::after {
+    width: 100%;
+    height: 100%;
+}
+
+.btn-hero-cta:active {
+    transform: translateY(-1px) scale(1.02);
+    transition-duration: 0.15s;
+}
+
+/* Hero Gradient - Fixed CSS to prevent hydration issues */
+.hero-gradient {
+    background:
+        linear-gradient(
+            to right,
+            transparent 0%,
+            rgba(255, 255, 255, 0.3) 10%,
+            rgba(255, 255, 255, 0) 20%,
+            rgba(255, 255, 255, 0) 80%,
+            rgba(255, 255, 255, 0.3) 90%,
+            transparent 100%
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 0.9) 20%,
+            rgba(240, 248, 255, 0.6) 40%,
+            rgba(0, 83, 219, 0.4) 60%,
+            rgba(0, 83, 219, 0.2) 80%,
+            rgba(0, 83, 219, 0.1) 100%
+        ) !important;
+    opacity: 1 !important;
+}
+
+/* Enhanced Link Hover with Shimmer Effect */
+.link-shimmer {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.link-shimmer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(1, 120, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.link-shimmer:hover::before {
+    left: 100%;
+}
+
+/* Cool Button Glow Effect */
+.btn-glow {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-glow::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease;
+    border-radius: 50%;
+}
+
+.btn-glow:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Magnetic Button Effect */
+.btn-magnetic {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+.btn-magnetic:hover {
+    transform: scale(1.05) rotate(1deg);
+}
+
+.btn-magnetic:active {
+    transform: scale(0.95) rotate(-1deg);
+    transition: all 0.1s;
+}
+
+/* Floating Animation for CTA elements */
+.float-animation {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Gradient Text Effect */
+.gradient-text {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* Smooth Card Hover */
+.card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+}
+
+.card-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Interactive Input Focus */
+.input-focus {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.input-focus:focus {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(1, 120, 255, 0.3);
+}
+
+/* Ripple Effect for Buttons */
+.btn-ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-ripple::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition:
+        width 0.6s,
+        height 0.6s;
+}
+
+.btn-ripple:active::before {
+    width: 300px;
+    height: 300px;
+}

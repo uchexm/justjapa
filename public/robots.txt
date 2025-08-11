@@ -1,17 +1,11 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /auth/
 Disallow: /api/
-Disallow: /offline
-
-# Googlebot
-User-agent: Googlebot
-Allow: /
-Disallow: /api/
-Disallow: /offline
 
 # Host
-Host: https://justjapa.com
+Host: https://justjapa.app
 
 # Sitemaps
-Sitemap: https://justjapa.com/sitemap.xml
+Sitemap: https://justjapa.app/sitemap.xml

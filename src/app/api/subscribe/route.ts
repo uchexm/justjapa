@@ -1,39 +1,40 @@
 import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
+
 import { Resend } from "resend";
+import { z } from "zod";
 
 const SubscribeSchema = z.object({
-  email: z.string().email(),
-  source: z.string().optional(),
-  token: z.string().optional(),
+    email: z.string().email(),
+    source: z.string().optional(),
+    token: z.string().optional(),
 });
 
 export async function POST(req: NextRequest) {
-  try {
-    const body = await req.json().catch(() => ({}));
-    const parsed = SubscribeSchema.safeParse(body);
-
-    if (!parsed.success) {
-      return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
-    }
-
-    // Honeypot token: if present, assume bot
-    if (parsed.data.token) {
-      return NextResponse.json({ ok: true });
-    }
-
-    const { email, source } = parsed.data;
-
-    // Send confirmation to user and notify team
     try {
-      const resend = new Resend('re_7H5iZL3A_Kmiy7yFSD9Ba67WcRQgmr5HW');
-      
-      // Send confirmation email to user
-      await resend.emails.send({
-        from: 'onboarding@resend.dev',
-        to: email,
-        subject: 'Welcome to JustJapa Waitlist! 🎉',
-        html: `
+        const body = await req.json().catch(() => ({}));
+        const parsed = SubscribeSchema.safeParse(body);
+
+        if (!parsed.success) {
+            return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
+        }
+
+        // Honeypot token: if present, assume bot
+        if (parsed.data.token) {
+            return NextResponse.json({ ok: true });
+        }
+
+        const { email, source } = parsed.data;
+
+        // Send confirmation to user and notify team
+        try {
+            const resend = new Resend(process.env.RESEND_API_KEY!);
+
+            // Send confirmation email to user
+            await resend.emails.send({
+                from: "onboarding@resend.dev",
+                to: email,
+                subject: "Welcome to JustJapa Waitlist! 🎉",
+                html: `
           <!DOCTYPE html>
           <html>
           <head>
@@ -73,31 +74,31 @@ export async function POST(req: NextRequest) {
             </table>
           </body>
           </html>
-        `
-      });
+        `,
+            });
 
-      // Send notification to admin
-      await resend.emails.send({
-        from: 'onboarding@resend.dev',
-        to: 'nwakauc1@gmail.com',
-        subject: 'New JustJapa Waitlist Signup 🚀',
-        html: `
+            // Send notification to admin
+            await resend.emails.send({
+                from: "onboarding@resend.dev",
+                to: "justjapa10@gmail.com",
+                subject: "New JustJapa Waitlist Signup 🚀",
+                html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <h2 style="color: #0178FF;">New Waitlist Signup!</h2>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Source:</strong> ${source || "direct"}</p>
             <p><strong>Timestamp:</strong> ${new Date().toLocaleString()}</p>
           </div>
-        `
-      });
-    } catch (emailError) {
-      console.error('Email sending failed:', emailError);
-      // Don't fail the request if email fails
-    }
+        `,
+            });
+        } catch (emailError) {
+            console.error("Email sending failed:", emailError);
+            // Don't fail the request if email fails
+        }
 
-    return NextResponse.json({ ok: true });
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: "Unexpected error" }, { status: 500 });
-  }
+        return NextResponse.json({ ok: true });
+    } catch (error) {
+        console.error(error);
+        return NextResponse.json({ error: "Unexpected error" }, { status: 500 });
+    }
 }

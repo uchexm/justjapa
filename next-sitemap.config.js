@@ -1,45 +1,37 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://justjapa.com',
-  generateRobotsTxt: true,
-  changefreq: 'daily',
-  priority: 0.7,
-  sitemapSize: 5000,
-  exclude: ['/api/*', '/offline'],
-  robotsTxtOptions: {
-    additionalSitemaps: [],
-    policies: [
-      { 
-        userAgent: '*', 
-        allow: '/',
-        disallow: ['/api/', '/offline']
-      },
-      {
-        userAgent: 'Googlebot',
-        allow: '/',
-        disallow: ['/api/', '/offline']
-      }
-    ],
-  },
-  transform: async (config, path) => {
-    // Custom priority for specific paths
-    const priorities = {
-      '/': 1.0,
-      '/coming-soon': 0.8,
-      '/success': 0.6,
-    };
+    siteUrl: process.env.SITE_URL || "https://justjapa.app",
+    generateRobotsTxt: true,
+    changefreq: "daily",
+    priority: 0.7,
+    sitemapSize: 5000,
+    exclude: ["/auth/*", "/api/*", "/offline"],
+    robotsTxtOptions: {
+        policies: [
+            {
+                userAgent: "*",
+                allow: "/",
+                disallow: ["/auth/", "/api/"],
+            },
+        ],
+        additionalSitemaps: ["https://justjapa.app/sitemap.xml"],
+    },
+    transform: async (config, path) => {
+        // Custom transform for specific paths
+        if (path === "/") {
+            return {
+                loc: path,
+                changefreq: "daily",
+                priority: 1.0,
+                lastmod: new Date().toISOString(),
+            };
+        }
 
-    const changefreqs = {
-      '/': 'daily',
-      '/coming-soon': 'weekly',
-      '/success': 'monthly',
-    };
-
-    return {
-      loc: path,
-      changefreq: changefreqs[path] || config.changefreq,
-      priority: priorities[path] || config.priority,
-      lastmod: new Date().toISOString(),
-    };
-  },
+        return {
+            loc: path,
+            changefreq: config.changefreq,
+            priority: config.priority,
+            lastmod: new Date().toISOString(),
+        };
+    },
 };
