@@ -9,52 +9,33 @@ interface JoinNowBlueButtonProps {
 
 export function JoinNowBlueButton({ className = "", onClick }: JoinNowBlueButtonProps) {
     return (
-        <button
-            onClick={onClick}
-            className={`btn-hero-cta transform transition-all duration-300 hover:scale-105 hover:shadow-lg ${className}`}
-            style={{
-                background: "none",
-                padding: 0,
-                cursor: "pointer",
-            }}
-        >
-            <svg
-                width='240'
-                height='84'
-                viewBox='0 0 290 101'
-                fill='none'
-                xmlns='http://www.w3.org/2000/svg'
+        <div className={`btn-conteiner ${className}`}>
+            <button
+                onClick={onClick}
+                className='btn-content'
+                style={{ width: "240px", height: "84px" }}
             >
-                <rect width='290' height='100.26' rx='50.1301' fill='#0053DB' />
-                <text
-                    x='145'
-                    y='53'
-                    textAnchor='middle'
-                    dominantBaseline='central'
-                    fill='white'
-                    fontSize='20'
-                    fontWeight='600'
-                    fontFamily='DM Sans'
-                >
-                    Join Now
-                </text>
-                <g clipPath='url(#clip0_13_20)'>
-                    <path
-                        d='M205.498 44.2007V46.4175H219.406L204.833 60.9414L206.352 62.5278L220.982 47.9398V61.8441H223.16V44.2007H205.498Z'
-                        fill='white'
-                    />
-                </g>
-                <defs>
-                    <clipPath id='clip0_13_20'>
-                        <rect
-                            width='18.3271'
-                            height='18.3271'
-                            fill='white'
-                            transform='translate(204.833 44.2007)'
+                <span className='btn-title'>Join Now</span>
+                <span className='icon-arrow'>
+                    <svg width='18.3271' height='18.3271' viewBox='0 0 18.3271 18.3271' fill='none'>
+                        <path
+                            className='three'
+                            d='M0.998 0.200684V2.41748H14.906L0.333 16.9414L1.852 18.5278L16.482 3.93981V17.8441H18.66V0.200684H0.998Z'
+                            fill='currentColor'
                         />
-                    </clipPath>
-                </defs>
-            </svg>
-        </button>
+                        <path
+                            className='two'
+                            d='M0.998 0.200684V2.41748H14.906L0.333 16.9414L1.852 18.5278L16.482 3.93981V17.8441H18.66V0.200684H0.998Z'
+                            fill='currentColor'
+                        />
+                        <path
+                            className='one'
+                            d='M0.998 0.200684V2.41748H14.906L0.333 16.9414L1.852 18.5278L16.482 3.93981V17.8441H18.66V0.200684H0.998Z'
+                            fill='currentColor'
+                        />
+                    </svg>
+                </span>
+            </button>
+        </div>
     );
 }
