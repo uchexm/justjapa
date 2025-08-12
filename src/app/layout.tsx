@@ -5,6 +5,7 @@ import { Cormorant_Garamond, DM_Sans, Geist_Mono, Work_Sans } from "next/font/go
 
 import { Analytics } from "@vercel/analytics/react";
 
+import { HydrationFix } from "@/components/HydrationFix";
 import { SEOHead } from "@/components/SEOHead";
 import { StructuredData } from "@/components/StructuredData";
 import { siteMetadata } from "@/lib/metadata";
@@ -56,11 +57,14 @@ export default function RootLayout({
         <html lang='en'>
             <body
                 className={`${dmSans.variable} ${geistMono.variable} ${workSans.variable} ${cormorantGaramond.variable} antialiased`}
+                suppressHydrationWarning={true}
             >
                 <Suspense fallback={null}>
                     <SEOHead />
                     <StructuredData />
                 </Suspense>
+
+                <HydrationFix />
 
                 {children}
 

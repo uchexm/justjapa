@@ -1,0 +1,179 @@
+/* Logo Star Hover Effect */
+.logoContainer {
+    position: relative;
+    display: inline-flex;
+    overflow: visible;
+    cursor: pointer;
+}
+
+.star {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    opacity: 0;
+    transform: scale(0.5);
+    z-index: 100;
+    transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+    pointer-events: none;
+}
+
+.star1 {
+    top: 20%;
+    left: 20%;
+    transition-delay: 0.1s;
+}
+
+.star2 {
+    top: 60%;
+    left: 80%;
+    width: 8px;
+    height: 8px;
+    transition-delay: 0.2s;
+}
+
+.star3 {
+    top: 10%;
+    left: 70%;
+    width: 6px;
+    height: 6px;
+    transition-delay: 0.3s;
+}
+
+.star4 {
+    top: 80%;
+    left: 30%;
+    width: 10px;
+    height: 10px;
+    transition-delay: 0.4s;
+}
+
+.star5 {
+    top: 40%;
+    left: -10%;
+    width: 8px;
+    height: 8px;
+    transition-delay: 0.5s;
+}
+
+.star6 {
+    top: 0%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    transition-delay: 0.6s;
+}
+
+.logoContainer:hover .star {
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+}
+
+.logoContainer:hover .star1 {
+    top: -30px;
+    left: -20px;
+    filter: drop-shadow(0 0 8px #3b82f6);
+}
+
+.logoContainer:hover .star2 {
+    top: 60px;
+    left: 150px;
+    filter: drop-shadow(0 0 6px #10b981);
+}
+
+.logoContainer:hover .star3 {
+    top: -20px;
+    left: 120px;
+    filter: drop-shadow(0 0 4px #f59e0b);
+}
+
+.logoContainer:hover .star4 {
+    top: 70px;
+    left: -30px;
+    filter: drop-shadow(0 0 7px #8b5cf6);
+}
+
+.logoContainer:hover .star5 {
+    top: 30px;
+    left: -40px;
+    filter: drop-shadow(0 0 5px #ef4444);
+}
+
+.logoContainer:hover .star6 {
+    top: -25px;
+    left: 80px;
+    filter: drop-shadow(0 0 6px #06b6d4);
+}
+
+.starFill1 {
+    fill: #3b82f6;
+}
+
+.starFill2 {
+    fill: #10b981;
+}
+
+.starFill3 {
+    fill: #f59e0b;
+}
+
+.starFill4 {
+    fill: #8b5cf6;
+}
+
+.starFill5 {
+    fill: #ef4444;
+}
+
+.starFill6 {
+    fill: #06b6d4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .star {
+        width: 8px;
+        height: 8px;
+    }
+
+    .star2,
+    .star5 {
+        width: 6px;
+        height: 6px;
+    }
+
+    .star3,
+    .star6 {
+        width: 4px;
+        height: 4px;
+    }
+
+    .logoContainer:hover .star1 {
+        top: -20px;
+        left: -15px;
+    }
+
+    .logoContainer:hover .star2 {
+        top: 40px;
+        left: 100px;
+    }
+
+    .logoContainer:hover .star3 {
+        top: -15px;
+        left: 80px;
+    }
+
+    .logoContainer:hover .star4 {
+        top: 50px;
+        left: -20px;
+    }
+
+    .logoContainer:hover .star5 {
+        top: 20px;
+        left: -25px;
+    }
+
+    .logoContainer:hover .star6 {
+        top: -15px;
+        left: 60px;
+    }
+}

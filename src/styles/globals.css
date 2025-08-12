@@ -2,6 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CSS Reset to remove default margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Prevent hydration issues with clamp() values */
+.no-hydration-mismatch {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+/* Hide browser extension injections that cause hydration issues */
+body[inject_video_svd],
+body[data-new-gr-c-s-check-loaded],
+body[data-gr-ext-installed],
+body[cz-shortcut-listen] {
+    /* Ensure these attributes don't affect styling */
+}
+
+/* Ensure consistent body styling regardless of extensions */
+body {
+    position: relative;
+}
+
 :root {
     --background: #ffffff;
     --foreground: #0a0a0a;
@@ -618,6 +654,18 @@ section {
 .card-hover:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Simple Card Hover for How It Works */
+.card-hover-simple {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.card-hover-simple:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(1, 120, 255, 0.15);
+    border-color: rgba(1, 120, 255, 0.3);
 }
 
 /* Interactive Input Focus */

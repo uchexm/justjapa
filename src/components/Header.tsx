@@ -13,9 +13,12 @@ export function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const scrollToWaitlist = () => {
-        const waitlistSection = document.getElementById("waitlist");
-        if (waitlistSection) {
-            waitlistSection.scrollIntoView({ behavior: "smooth" });
+        // Check if we're in the browser before accessing DOM
+        if (typeof window !== "undefined") {
+            const waitlistSection = document.getElementById("waitlist");
+            if (waitlistSection) {
+                waitlistSection.scrollIntoView({ behavior: "smooth" });
+            }
         }
     };
 
@@ -30,10 +33,10 @@ export function Header() {
 
     return (
         <>
-            <header className='sticky top-0 z-40 w-full bg-white'>
-                <div className='mx-auto max-w-[1593px] px-4 sm:px-6 lg:px-[68px]'>
+            <header className='sticky top-0 z-40 w-full border-b border-gray-100 bg-white'>
+                <div className='mx-auto max-w-[1593px]'>
                     <div
-                        className='mt-4 flex items-center justify-between bg-white px-4 py-3 sm:px-6 lg:mt-[38px] lg:px-8 lg:py-4'
+                        className='flex items-center justify-between bg-white px-4 py-3 sm:px-6 lg:px-[68px] lg:py-4'
                         style={{ minHeight: "80px", height: "auto" }}
                     >
                         {/* Logo - positioned according to Figma */}

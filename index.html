@@ -1,639 +1,1182 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JustJapa - The Complete Migration Ecosystem</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #3b82f6;
-            --secondary: #10b981;
-            --dark: #1e293b;
-            --light: #f8fafc;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .dashboard-nav {
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary) transparent;
-        }
-        
-        .dashboard-nav::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -32px;
-            top: 0;
-            height: 100%;
-            width: 2px;
-            background-color: var(--primary);
-        }
-        
-        .phase-card {
-            background: linear-gradient(145deg, #ffffff, #f3f4f6);
-            border: 1px solid #e5e7eb;
-            transition: all 0.3s ease;
-        }
-        
-        .phase-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            border-color: var(--primary);
-        }
-        
-        .ecosystem-flow {
-            background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, #10b981 100%);
-            background-size: 200% 200%;
-            animation: gradient 3s ease infinite;
-        }
-        
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .pricing-card {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .pricing-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .pricing-card:hover::before {
-            left: 100%;
-        }
-    </style>
-</head>
-<body class="bg-gray-50">
-    <!-- Top Navigation -->
-    <header class="bg-white shadow-sm">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/563526f1-f11b-46fc-a61f-d77a9032dfc9.png" alt="JustJapa - Nigerian Migration Platform logo" class="h-10">
-                <h1 class="text-xl font-bold text-gray-800">JustJapa</h1>
-            </div>
-            
-            <nav class="hidden md:flex space-x-8">
-                <a href="#features" class="text-gray-600 hover:text-blue-600">Immigration News</a>
-                <a href="#how-it-works" class="text-gray-600 hover:text-blue-600">How It Works</a>
-                <a href="#testimonials" class="text-gray-600 hover:text-blue-600">Success Stories</a>
-                <a href="#country-guide" class="text-gray-600 hover:text-blue-600">Country Guide</a>
-                <a href="#visa-guarantee" class="text-gray-600 hover:text-blue-600">Visa Guarantee</a>
-            </nav>
-            
-            <div class="flex items-center space-x-4">
-                <button class="px-4 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50">Login</button>
-                <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Get Started</button>
-            </div>
-            
-            <button class="md:hidden text-gray-600">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
-        </div>
-    </header>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JustJapa - The Complete Migration Ecosystem</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+        <style>
+            :root {
+                --primary: #3b82f6;
+                --secondary: #10b981;
+                --dark: #1e293b;
+                --light: #f8fafc;
+            }
 
-    <!-- Hero Section -->
-    <section class="gradient-bg text-white">
-        <div class="container mx-auto px-4 py-20 md:py-28">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-6">The Complete Migration Ecosystem</h1>
-                    <p class="text-xl mb-4 opacity-90">From "I want to japa" to "I'm successfully settled"</p>
-                    <p class="text-lg mb-8 opacity-80">Everything you need to migrate successfully - planning, documents, visas, travel, jobs, and settlement support in one intelligent platform.</p>
-                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-                        <button class="px-6 py-3 bg-white text-blue-600 font-medium rounded-lg hover:bg-gray-100 transition">Match with an Agent</button>
-                        <button class="px-6 py-3 border border-white text-white font-medium rounded-lg hover:bg-white hover:bg-opacity-10 transition">Watch Demo</button>
-                    </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <div class="relative w-full max-w-md">
-                        <div class="absolute -top-10 -left-10 w-64 h-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
-                        <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-green-400 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
-                        <div class="relative bg-white rounded-2xl shadow-2xl overflow-hidden">
-                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/acadf97a-4cf0-4432-9bd2-046d534b8c7f.png" alt="Dashboard preview showing migration progress tracker and agent matching interface with country flags" class="w-full">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            body {
+                font-family: "Inter", sans-serif;
+            }
 
-    <!-- Migration Journey Flow -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Your Complete Migration Journey</h2>
-                <p class="text-gray-600 max-w-3xl mx-auto">AI-powered guidance through every step from planning to settlement</p>
-            </div>
-            
-            <!-- Journey Flow -->
-            <div class="relative">
-                <div class="ecosystem-flow h-2 rounded-full mb-8"></div>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-8">
-                    <div class="text-center">
-                        <div class="w-16 h-16 mx-auto mb-3 bg-blue-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-lightbulb text-blue-600 text-xl"></i>
-                        </div>
-                        <h4 class="font-semibold text-sm">Discovery</h4>
-                        <p class="text-xs text-gray-600">"Where to go?"</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-16 h-16 mx-auto mb-3 bg-purple-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-route text-purple-600 text-xl"></i>
-                        </div>
-                        <h4 class="font-semibold text-sm">Planning</h4>
-                        <p class="text-xs text-gray-600">AI Roadmap</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-16 h-16 mx-auto mb-3 bg-green-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-file-check text-green-600 text-xl"></i>
-                        </div>
-                        <h4 class="font-semibold text-sm">Documents</h4>
-                        <p class="text-xs text-gray-600">Quality Assurance</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-16 h-16 mx-auto mb-3 bg-yellow-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-passport text-yellow-600 text-xl"></i>
-                        </div>
-                        <h4 class="font-semibold text-sm">Visa Apps</h4>
-                        <p class="text-xs text-gray-600">Expert Agents</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-16 h-16 mx-auto mb-3 bg-indigo-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-plane text-indigo-600 text-xl"></i>
-                        </div>
-                        <h4 class="font-semibold text-sm">Travel</h4>
-                        <p class="text-xs text-gray-600">Flight & Logistics</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-16 h-16 mx-auto mb-3 bg-pink-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-home text-pink-600 text-xl"></i>
-                        </div>
-                        <h4 class="font-semibold text-sm">Arrival</h4>
-                        <p class="text-xs text-gray-600">Settlement Support</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-16 h-16 mx-auto mb-3 bg-emerald-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-trophy text-emerald-600 text-xl"></i>
-                        </div>
-                        <h4 class="font-semibold text-sm">Thriving</h4>
-                        <p class="text-xs text-gray-600">Community & Growth</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            .gradient-bg {
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+            }
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-12">
-        <!-- Dashboard Preview -->
-        <section class="mb-20">
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                <nav class="flex border-b">
-                    <button class="px-6 py-3 border-b-2 border-blue-600 text-blue-600 font-medium">Dashboard</button>
-                    <button class="px-6 py-3 text-gray-600 hover:text-blue-600">Documents</button>
-                    <button class="px-6 py-3 text-gray-600 hover:text-blue-600">Agents</button>
-                    <button class="px-6 py-3 text-gray-600 hover:text-blue-600">Roadmap</button>
-                    <button class="px-6 py-3 text-gray-600 hover:text-blue-600">Community</button>
-                    <button class="px-6 py-3 text-gray-600 hover:text-blue-600">Refunds</button>
+            .feature-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            }
+
+            .dashboard-nav {
+                scrollbar-width: thin;
+                scrollbar-color: var(--primary) transparent;
+            }
+
+            .dashboard-nav::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            .timeline-item::before {
+                content: "";
+                position: absolute;
+                left: -32px;
+                top: 0;
+                height: 100%;
+                width: 2px;
+                background-color: var(--primary);
+            }
+
+            .phase-card {
+                background: linear-gradient(145deg, #ffffff, #f3f4f6);
+                border: 1px solid #e5e7eb;
+                transition: all 0.3s ease;
+            }
+
+            .phase-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+                border-color: var(--primary);
+            }
+
+            .ecosystem-flow {
+                background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, #10b981 100%);
+                background-size: 200% 200%;
+                animation: gradient 3s ease infinite;
+            }
+
+            @keyframes gradient {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+
+            .pricing-card {
+                position: relative;
+                overflow: hidden;
+            }
+
+            .pricing-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.2),
+                    transparent
+                );
+                transition: left 0.5s;
+            }
+
+            .pricing-card:hover::before {
+                left: 100%;
+            }
+
+            /* Logo Star Hover Effect */
+            .logo-container {
+                position: relative;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                overflow: visible;
+                z-index: 10;
+            }
+
+            .star-1 {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 15px;
+                height: auto;
+                opacity: 0.3;
+                transform: scale(0.5);
+                z-index: 100;
+                transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+                pointer-events: none;
+            }
+
+            .star-2 {
+                position: absolute;
+                top: 45%;
+                left: 45%;
+                width: 10px;
+                height: auto;
+                opacity: 0;
+                transform: scale(0.5);
+                z-index: 10;
+                transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+                pointer-events: none;
+            }
+
+            .star-3 {
+                position: absolute;
+                top: 40%;
+                left: 40%;
+                width: 8px;
+                height: auto;
+                opacity: 0;
+                transform: scale(0.5);
+                z-index: 10;
+                transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+                pointer-events: none;
+            }
+
+            .star-4 {
+                position: absolute;
+                top: 20%;
+                left: 40%;
+                width: 12px;
+                height: auto;
+                opacity: 0;
+                transform: scale(0.5);
+                z-index: 10;
+                transition: all 0.8s cubic-bezier(0, 0.4, 0, 1.01);
+                pointer-events: none;
+            }
+
+            .star-5 {
+                position: absolute;
+                top: 25%;
+                left: 45%;
+                width: 10px;
+                height: auto;
+                opacity: 0;
+                transform: scale(0.5);
+                z-index: 10;
+                transition: all 0.6s cubic-bezier(0, 0.4, 0, 1.01);
+                pointer-events: none;
+            }
+
+            .star-6 {
+                position: absolute;
+                top: 5%;
+                left: 50%;
+                width: 8px;
+                height: auto;
+                opacity: 0;
+                transform: scale(0.5);
+                z-index: 10;
+                transition: all 0.8s ease;
+                pointer-events: none;
+            }
+
+            .logo-container:hover .star-1 {
+                top: -30px;
+                left: -30px;
+                opacity: 1;
+                transform: scale(1.5) rotate(360deg);
+                filter: drop-shadow(0 0 8px #3b82f6);
+            }
+
+            .logo-container:hover .star-2 {
+                top: -30%;
+                left: 15%;
+                opacity: 1;
+                transform: scale(1) rotate(180deg);
+                filter: drop-shadow(0 0 6px #10b981);
+            }
+
+            .logo-container:hover .star-3 {
+                top: 120%;
+                left: 30%;
+                opacity: 1;
+                transform: scale(0.8) rotate(-180deg);
+                filter: drop-shadow(0 0 4px #f59e0b);
+            }
+
+            .logo-container:hover .star-4 {
+                top: -10%;
+                left: 110%;
+                opacity: 1;
+                transform: scale(1.1) rotate(270deg);
+                filter: drop-shadow(0 0 7px #8b5cf6);
+            }
+
+            .logo-container:hover .star-5 {
+                top: 80%;
+                left: 120%;
+                opacity: 1;
+                transform: scale(0.9) rotate(-270deg);
+                filter: drop-shadow(0 0 5px #ef4444);
+            }
+
+            .logo-container:hover .star-6 {
+                top: -40%;
+                left: 80%;
+                opacity: 1;
+                transform: scale(0.7) rotate(90deg);
+                filter: drop-shadow(0 0 6px #06b6d4);
+            }
+
+            .fil0 {
+                fill: #3b82f6;
+            }
+
+            .star-2 .fil0 {
+                fill: #10b981;
+            }
+
+            .star-3 .fil0 {
+                fill: #f59e0b;
+            }
+
+            .star-4 .fil0 {
+                fill: #8b5cf6;
+            }
+
+            .star-5 .fil0 {
+                fill: #ef4444;
+            }
+
+            .star-6 .fil0 {
+                fill: #06b6d4;
+            }
+
+            /* Social Media Layered Hover Effect */
+            .social-icon {
+                position: relative;
+                display: inline-block;
+                text-decoration: none;
+                transition: all 0.2s;
+            }
+
+            .layer {
+                width: 40px;
+                height: 40px;
+                transition: transform 0.3s;
+                position: relative;
+            }
+
+            .social-icon:hover .layer {
+                transform: rotate(-35deg) skew(20deg);
+            }
+
+            .layer span {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                border: 1px solid;
+                border-radius: 8px;
+                transition: all 0.3s;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+            }
+
+            .social-icon:hover .layer span:nth-child(1) {
+                opacity: 0.2;
+            }
+
+            .social-icon:hover .layer span:nth-child(2) {
+                opacity: 0.4;
+                transform: translate(3px, -3px);
+            }
+
+            .social-icon:hover .layer span:nth-child(3) {
+                opacity: 0.6;
+                transform: translate(6px, -6px);
+            }
+
+            .social-icon:hover .layer span:nth-child(4) {
+                opacity: 0.8;
+                transform: translate(9px, -9px);
+            }
+
+            .social-icon:hover .layer span:nth-child(5) {
+                opacity: 1;
+                transform: translate(12px, -12px);
+            }
+
+            /* Platform-specific colors */
+            .facebook .layer span {
+                color: #1877f2;
+                border-color: #1877f2;
+                background: rgba(24, 119, 242, 0.1);
+            }
+
+            .facebook:hover .layer span {
+                box-shadow: -1px 1px 3px #1877f2;
+            }
+
+            .twitter .layer span {
+                color: #1da1f2;
+                border-color: #1da1f2;
+                background: rgba(29, 161, 242, 0.1);
+            }
+
+            .twitter:hover .layer span {
+                box-shadow: -1px 1px 3px #1da1f2;
+            }
+
+            .linkedin .layer span {
+                color: #0a66c2;
+                border-color: #0a66c2;
+                background: rgba(10, 102, 194, 0.1);
+            }
+
+            .linkedin:hover .layer span {
+                box-shadow: -1px 1px 3px #0a66c2;
+            }
+
+            .instagram .layer span {
+                color: #e4405f;
+                border-color: #e4405f;
+                background: rgba(228, 64, 95, 0.1);
+            }
+
+            .instagram:hover .layer span {
+                box-shadow: -1px 1px 3px #e4405f;
+            }
+        </style>
+    </head>
+    <body class="bg-gray-50">
+        <!-- Top Navigation -->
+        <header class="bg-white shadow-sm">
+            <div class="container mx-auto flex items-center justify-between px-4 py-3">
+                <div class="logo-container space-x-2">
+                    <img
+                        src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/563526f1-f11b-46fc-a61f-d77a9032dfc9.png"
+                        alt="JustJapa - Nigerian Migration Platform logo"
+                        class="h-10"
+                    />
+                    <h1 class="text-xl font-bold text-gray-800">JustJapa</h1>
+
+                    <!-- Star Elements -->
+                    <svg class="star-1" viewBox="0 0 47 47" xmlns="http://www.w3.org/2000/svg">
+                        <polygon
+                            class="fil0"
+                            points="23.5,0 29.1,17.8 47,17.8 32.9,28.8 38.6,46.6 23.5,35.6 8.4,46.6 14.1,28.8 0,17.8 17.9,17.8"
+                        />
+                    </svg>
+
+                    <svg class="star-2" viewBox="0 0 47 47" xmlns="http://www.w3.org/2000/svg">
+                        <polygon
+                            class="fil0"
+                            points="23.5,0 29.1,17.8 47,17.8 32.9,28.8 38.6,46.6 23.5,35.6 8.4,46.6 14.1,28.8 0,17.8 17.9,17.8"
+                        />
+                    </svg>
+
+                    <svg class="star-3" viewBox="0 0 47 47" xmlns="http://www.w3.org/2000/svg">
+                        <polygon
+                            class="fil0"
+                            points="23.5,0 29.1,17.8 47,17.8 32.9,28.8 38.6,46.6 23.5,35.6 8.4,46.6 14.1,28.8 0,17.8 17.9,17.8"
+                        />
+                    </svg>
+
+                    <svg class="star-4" viewBox="0 0 47 47" xmlns="http://www.w3.org/2000/svg">
+                        <polygon
+                            class="fil0"
+                            points="23.5,0 29.1,17.8 47,17.8 32.9,28.8 38.6,46.6 23.5,35.6 8.4,46.6 14.1,28.8 0,17.8 17.9,17.8"
+                        />
+                    </svg>
+
+                    <svg class="star-5" viewBox="0 0 47 47" xmlns="http://www.w3.org/2000/svg">
+                        <polygon
+                            class="fil0"
+                            points="23.5,0 29.1,17.8 47,17.8 32.9,28.8 38.6,46.6 23.5,35.6 8.4,46.6 14.1,28.8 0,17.8 17.9,17.8"
+                        />
+                    </svg>
+
+                    <svg class="star-6" viewBox="0 0 47 47" xmlns="http://www.w3.org/2000/svg">
+                        <polygon
+                            class="fil0"
+                            points="23.5,0 29.1,17.8 47,17.8 32.9,28.8 38.6,46.6 23.5,35.6 8.4,46.6 14.1,28.8 0,17.8 17.9,17.8"
+                        />
+                    </svg>
+                </div>
+
+                <nav class="hidden space-x-8 md:flex">
+                    <a href="#features" class="text-gray-600 hover:text-blue-600"
+                        >Immigration News</a
+                    >
+                    <a href="#how-it-works" class="text-gray-600 hover:text-blue-600"
+                        >How It Works</a
+                    >
+                    <a href="#testimonials" class="text-gray-600 hover:text-blue-600"
+                        >Success Stories</a
+                    >
+                    <a href="#country-guide" class="text-gray-600 hover:text-blue-600"
+                        >Country Guide</a
+                    >
+                    <a href="#visa-guarantee" class="text-gray-600 hover:text-blue-600"
+                        >Visa Guarantee</a
+                    >
                 </nav>
-                
-                <div class="p-6">
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <!-- Migration Progress -->
-                        <div class="lg:col-span-2 bg-gray-50 p-6 rounded-lg">
-                            <h2 class="text-xl font-semibold mb-4">Your Migration Progress</h2>
-                            <div class="space-y-6">
-                                <!-- Progress Steps -->
-                                <div class="relative">
-                                    <div class="flex justify-between mb-2">
-                                        <span class="text-sm font-medium text-blue-600">Phase 1: Preparation</span>
-                                        <span class="text-sm font-medium text-green-600">65% Complete</span>
-                                    </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                        <div class="bg-blue-600 h-2.5 rounded-full" style="width: 65%"></div>
-                                    </div>
-                                    
-                                    <div class="mt-6 space-y-8">
-                                        <div class="relative timeline-item pl-8">
-                                            <div class="absolute -left-8 top-0 w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-white">
-                                                <i class="fas fa-check text-xs"></i>
-                                            </div>
-                                            <h3 class="font-medium">Initial Consultation</h3>
-                                            <p class="text-sm text-gray-600">Completed with Agent Maria G.</p>
-                                        </div>
-                                        
-                                        <div class="relative timeline-item pl-8">
-                                            <div class="absolute -left-8 top-0 w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-white">
-                                                2
-                                            </div>
-                                            <h3 class="font-medium">Document Verification</h3>
-                                            <p class="text-sm text-gray-600">Pending your passport upload</p>
-                                            <button class="mt-2 text-sm text-blue-600 hover:text-blue-800">Upload Now</button>
-                                        </div>
-                                        
-                                        <div class="relative timeline-item pl-8">
-                                            <div class="absolute -left-8 top-0 w-5 h-5 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">
-                                                3
-                                            </div>
-                                            <h3 class="font-medium">Application Submission</h3>
-                                            <p class="text-sm text-gray-500">Upcoming step</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Agent Match -->
-                        <div class="bg-gray-50 p-6 rounded-lg">
-                            <h2 class="text-xl font-semibold mb-4">Your Migration Agent</h2>
-                            <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
-                                <div class="flex items-center space-x-4 mb-3">
-                                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9d10f665-a1ae-4d91-8237-c2153925a716.png" alt="Portrait of Maria Gonzales, licensed migration agent with 8 years experience specializing in Canadian immigration" class="w-12 h-12 rounded-full">
-                                    <div>
-                                        <h3 class="font-medium">Maria Gonzales</h3>
-                                        <p class="text-sm text-gray-600">Licensed Agent - Canada Specialist</p>
-                                        <div class="flex items-center mt-1">
-                                            <div class="flex text-amber-400">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half-alt"></i>
-                                            </div>
-                                            <span class="text-xs text-gray-600 ml-1">4.7 (128 reviews)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex space-x-2 mt-3">
-                                    <span class="inline-block px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded">Express Entry</span>
-                                    <span class="inline-block px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded">Student Visa</span>
-                                </div>
-                                <button class="w-full mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Message Agent</button>
-                            </div>
-                            
-                            <h3 class="text-lg font-medium mt-6 mb-3">Next Steps</h3>
-                            <ul class="space-y-3">
-                                <li class="flex items-center space-x-3">
-                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600">
-                                        <i class="fas fa-file-alt text-xs"></i>
-                                    </div>
-                                    <span>Complete document checklist</span>
-                                </li>
-                                <li class="flex items-center space-x-3">
-                                    <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-                                        <i class="fas fa-video text-xs"></i>
-                                    </div>
-                                    <span>Schedule next consultation</span>
-                                </li>
-                                <li class="flex items-center space-x-3">
-                                    <div class="w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
-                                        <i class="fas fa-search-dollar text-xs"></i>
-                                    </div>
-                                    <span>Compare financial options</span>
-                                </li>
-                            </ul>
+
+                <div class="flex items-center space-x-4">
+                    <button
+                        class="rounded-lg border border-blue-600 px-4 py-2 text-blue-600 hover:bg-blue-50"
+                    >
+                        Login
+                    </button>
+                    <button class="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
+                        Get Started
+                    </button>
+                </div>
+
+                <button class="text-gray-600 md:hidden">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="gradient-bg text-white">
+            <div class="container mx-auto px-4 py-20 md:py-28">
+                <div class="flex flex-col items-center md:flex-row">
+                    <div class="mb-10 md:mb-0 md:w-1/2">
+                        <h1 class="mb-6 text-4xl font-bold md:text-6xl">
+                            The Complete Migration Ecosystem
+                        </h1>
+                        <p class="mb-4 text-xl opacity-90">
+                            From "I want to japa" to "I'm successfully settled"
+                        </p>
+                        <p class="mb-8 text-lg opacity-80">
+                            Everything you need to migrate successfully - planning, documents,
+                            visas, travel, jobs, and settlement support in one intelligent platform.
+                        </p>
+                        <div class="flex flex-col space-y-3 sm:flex-row sm:space-x-4 sm:space-y-0">
+                            <button
+                                class="rounded-lg bg-white px-6 py-3 font-medium text-blue-600 transition hover:bg-gray-100"
+                            >
+                                Match with an Agent
+                            </button>
+                            <button
+                                class="rounded-lg border border-white px-6 py-3 font-medium text-white transition hover:bg-white hover:bg-opacity-10"
+                            >
+                                Watch Demo
+                            </button>
                         </div>
                     </div>
-                    
-                    <!-- Complete Ecosystem Phases -->
-                    <h2 class="text-3xl font-bold mt-12 mb-8 text-center">The Complete Migration Ecosystem</h2>
-                    <p class="text-gray-600 text-center mb-12 max-w-3xl mx-auto">8 comprehensive phases covering every aspect of your migration journey - from initial planning to successful settlement and community integration.</p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <!-- Phase 1: Planning & Discovery -->
-                        <div class="phase-card rounded-xl p-6">
-                            <div class="w-16 h-16 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mb-4">
-                                <i class="fas fa-compass text-2xl"></i>
+                    <div class="flex justify-center md:w-1/2">
+                        <div class="relative w-full max-w-md">
+                            <div
+                                class="absolute -left-10 -top-10 h-64 w-64 rounded-full bg-blue-400 opacity-70 mix-blend-multiply blur-xl filter"
+                            ></div>
+                            <div
+                                class="absolute -bottom-10 -right-10 h-64 w-64 rounded-full bg-green-400 opacity-70 mix-blend-multiply blur-xl filter"
+                            ></div>
+                            <div class="relative overflow-hidden rounded-2xl bg-white shadow-2xl">
+                                <img
+                                    src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/acadf97a-4cf0-4432-9bd2-046d534b8c7f.png"
+                                    alt="Dashboard preview showing migration progress tracker and agent matching interface with country flags"
+                                    class="w-full"
+                                />
                             </div>
-                            <h3 class="text-xl font-semibold mb-3 text-blue-600">Phase 1: Discovery</h3>
-                            <h4 class="font-medium mb-2">Migration Planning</h4>
-                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
-                                <li>• Smart Migration Wizard</li>
-                                <li>• Country Intelligence Engine</li>
-                                <li>• AI Roadmap Builder</li>
-                                <li>• Budget & Timeline Planning</li>
-                            </ul>
-                            <button class="text-blue-600 text-sm font-medium hover:text-blue-800">Explore Phase →</button>
-                        </div>
-
-                        <!-- Phase 2: Document Preparation -->
-                        <div class="phase-card rounded-xl p-6">
-                            <div class="w-16 h-16 rounded-xl bg-green-100 text-green-600 flex items-center justify-center mb-4">
-                                <i class="fas fa-file-check text-2xl"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-3 text-green-600">Phase 2: Documents</h3>
-                            <h4 class="font-medium mb-2">Quality Assurance</h4>
-                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
-                                <li>• Document Quality Checker</li>
-                                <li>• Template Library & Guides</li>
-                                <li>• AI Verification System</li>
-                                <li>• Translation & Notarization</li>
-                            </ul>
-                            <button class="text-green-600 text-sm font-medium hover:text-green-800">Explore Phase →</button>
-                        </div>
-
-                        <!-- Phase 3: Visa Applications -->
-                        <div class="phase-card rounded-xl p-6">
-                            <div class="w-16 h-16 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center mb-4">
-                                <i class="fas fa-passport text-2xl"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-3 text-purple-600">Phase 3: Visa Apps</h3>
-                            <h4 class="font-medium mb-2">Expert Network</h4>
-                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
-                                <li>• Visa Application Suite</li>
-                                <li>• Agent Marketplace</li>
-                                <li>• Success Guarantee</li>
-                                <li>• Interview Preparation</li>
-                            </ul>
-                            <button class="text-purple-600 text-sm font-medium hover:text-purple-800">Explore Phase →</button>
-                        </div>
-
-                        <!-- Phase 4: Travel & Logistics -->
-                        <div class="phase-card rounded-xl p-6">
-                            <div class="w-16 h-16 rounded-xl bg-yellow-100 text-yellow-600 flex items-center justify-center mb-4">
-                                <i class="fas fa-plane text-2xl"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-3 text-yellow-600">Phase 4: Travel</h3>
-                            <h4 class="font-medium mb-2">Logistics & Booking</h4>
-                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
-                                <li>• Smart Flight Search</li>
-                                <li>• Travel Insurance</li>
-                                <li>• Accommodation Booking</li>
-                                <li>• Airport Assistance</li>
-                            </ul>
-                            <button class="text-yellow-600 text-sm font-medium hover:text-yellow-800">Explore Phase →</button>
-                        </div>
-
-                        <!-- Phase 5: Opportunities -->
-                        <div class="phase-card rounded-xl p-6">
-                            <div class="w-16 h-16 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4">
-                                <i class="fas fa-briefcase text-2xl"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-3 text-indigo-600">Phase 5: Opportunities</h3>
-                            <h4 class="font-medium mb-2">Jobs & Growth</h4>
-                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
-                                <li>• Global Jobs Board</li>
-                                <li>• Scholarship Database</li>
-                                <li>• Skills Development</li>
-                                <li>• Gig Economy Access</li>
-                            </ul>
-                            <button class="text-indigo-600 text-sm font-medium hover:text-indigo-800">Explore Phase →</button>
-                        </div>
-
-                        <!-- Phase 6: Community -->
-                        <div class="phase-card rounded-xl p-6">
-                            <div class="w-16 h-16 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center mb-4">
-                                <i class="fas fa-users text-2xl"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-3 text-pink-600">Phase 6: Community</h3>
-                            <h4 class="font-medium mb-2">Support Network</h4>
-                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
-                                <li>• Diaspora Network</li>
-                                <li>• Mentorship Matching</li>
-                                <li>• Peer Marketplace</li>
-                                <li>• Cultural Integration</li>
-                            </ul>
-                            <button class="text-pink-600 text-sm font-medium hover:text-pink-800">Explore Phase →</button>
-                        </div>
-
-                        <!-- Phase 7: Financial Services -->
-                        <div class="phase-card rounded-xl p-6">
-                            <div class="w-16 h-16 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4">
-                                <i class="fas fa-dollar-sign text-2xl"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-3 text-emerald-600">Phase 7: Financial</h3>
-                            <h4 class="font-medium mb-2">Money & Security</h4>
-                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
-                                <li>• Money Transfers</li>
-                                <li>• Proof of Funds</li>
-                                <li>• Fund My Japa</li>
-                                <li>• Escrow Protection</li>
-                            </ul>
-                            <button class="text-emerald-600 text-sm font-medium hover:text-emerald-800">Explore Phase →</button>
-                        </div>
-
-                        <!-- Phase 8: AI & Mobile -->
-                        <div class="phase-card rounded-xl p-6">
-                            <div class="w-16 h-16 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center mb-4">
-                                <i class="fas fa-robot text-2xl"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-3 text-orange-600">Phase 8: AI Platform</h3>
-                            <h4 class="font-medium mb-2">Intelligence & Mobile</h4>
-                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
-                                <li>• 24/7 AI Assistant</li>
-                                <li>• Predictive Analytics</li>
-                                <li>• Mobile-First Platform</li>
-                                <li>• Voice Commands</li>
-                            </ul>
-                            <button class="text-orange-600 text-sm font-medium hover:text-orange-800">Explore Phase →</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Pricing Section -->
-        <section class="mb-20 bg-gray-50 rounded-2xl p-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Three Clear Paths to Success</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Choose the option that best fits your needs and budget</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- DIY Option -->
-                <div class="pricing-card bg-white rounded-xl p-8 border border-gray-200 hover:border-blue-500 transition-all duration-300">
-                    <div class="text-center mb-6">
-                        <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-user-graduate text-blue-600 text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-2">DIY with AI</h3>
-                        <p class="text-gray-600 mb-4">Perfect for confident, budget-conscious migrants</p>
-                        <div class="text-4xl font-bold text-blue-600">₦100K - ₦500K</div>
-                        <p class="text-sm text-gray-500">One-time fee (excluding Visa fees)</p>
-                    </div>
-                    <ul class="space-y-3 mb-8"
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            <span class="text-sm">Full AI Migration Assistant</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            <span class="text-sm">Document templates & verification</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            <span class="text-sm">Step-by-step guided workflows</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            <span class="text-sm">Community support</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            <span class="text-sm">Basic visa guarantee</span>
-                        </li>
-                    </ul>
-                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">Get Started</button>
+        <!-- Migration Journey Flow -->
+        <section class="bg-white py-16">
+            <div class="container mx-auto px-4">
+                <div class="mb-12 text-center">
+                    <h2 class="mb-4 text-3xl font-bold md:text-4xl">
+                        Your Complete Migration Journey
+                    </h2>
+                    <p class="mx-auto max-w-3xl text-gray-600">
+                        AI-powered guidance through every step from planning to settlement
+                    </p>
                 </div>
 
-                <!-- Full Service Option -->
-                <div class="pricing-card bg-gradient-to-br from-purple-600 to-blue-600 text-white rounded-xl p-8 transform scale-105 relative">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                        <span class="bg-yellow-400 text-yellow-900 px-4 py-1 rounded-full text-sm font-medium">MOST POPULAR</span>
-                    </div>
-                    <div class="text-center mb-6">
-                        <div class="w-16 h-16 mx-auto mb-4 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                            <i class="fas fa-crown text-yellow-300 text-2xl"></i>
+                <!-- Journey Flow -->
+                <div class="relative">
+                    <div class="ecosystem-flow mb-8 h-2 rounded-full"></div>
+                    <div class="mb-8 grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-7">
+                        <div class="text-center">
+                            <div
+                                class="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100"
+                            >
+                                <i class="fas fa-lightbulb text-xl text-blue-600"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold">Discovery</h4>
+                            <p class="text-xs text-gray-600">"Where to go?"</p>
                         </div>
-                        <h3 class="text-2xl font-bold mb-2">Full Service</h3>
-                        <p class="text-blue-100 mb-4">Complete white-glove migration experience</p>
-                        <div class="text-4xl font-bold">₦1M - ₦10M</div>
-                        <p class="text-sm text-blue-200">One-time fee</p>
-                    </div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 mr-3"></i>
-                            <span class="text-sm">Everything in DIY Option</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 mr-3"></i>
-                            <span class="text-sm">Dedicated licensed agent</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 mr-3"></i>
-                            <span class="text-sm">Agent handles all paperwork</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 mr-3"></i>
-                            <span class="text-sm">Full visa guarantee</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 mr-3"></i>
-                            <span class="text-sm">Post-arrival support</span>
-                        </li>
-                    </ul>
-                    <button class="w-full bg-white text-purple-600 py-3 rounded-lg hover:bg-gray-100 transition font-semibold">Get Expert Help</button>
-                </div>
-
-                <!-- Pro Subscription -->
-                <div class="pricing-card bg-white rounded-xl p-8 border border-gray-200 hover:border-emerald-500 transition-all duration-300">
-                    <div class="text-center mb-6">
-                        <div class="w-16 h-16 mx-auto mb-4 bg-emerald-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-rocket text-emerald-600 text-2xl"></i>
+                        <div class="text-center">
+                            <div
+                                class="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-purple-100"
+                            >
+                                <i class="fas fa-route text-xl text-purple-600"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold">Planning</h4>
+                            <p class="text-xs text-gray-600">AI Roadmap</p>
                         </div>
-                        <h3 class="text-2xl font-bold mb-2">JustJapa Pro</h3>
-                        <p class="text-gray-600 mb-4">Ultimate migration experience</p>
-                        <div class="text-4xl font-bold text-emerald-600">₦100K</div>
-                        <p class="text-sm text-gray-500">/month (excluding Visa fees)</p>
+                        <div class="text-center">
+                            <div
+                                class="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-green-100"
+                            >
+                                <i class="fas fa-file-check text-xl text-green-600"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold">Documents</h4>
+                            <p class="text-xs text-gray-600">Quality Assurance</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-yellow-100"
+                            >
+                                <i class="fas fa-passport text-xl text-yellow-600"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold">Visa Apps</h4>
+                            <p class="text-xs text-gray-600">Expert Agents</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-indigo-100"
+                            >
+                                <i class="fas fa-plane text-xl text-indigo-600"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold">Travel</h4>
+                            <p class="text-xs text-gray-600">Flight & Logistics</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-pink-100"
+                            >
+                                <i class="fas fa-home text-xl text-pink-600"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold">Arrival</h4>
+                            <p class="text-xs text-gray-600">Settlement Support</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100"
+                            >
+                                <i class="fas fa-trophy text-xl text-emerald-600"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold">Thriving</h4>
+                            <p class="text-xs text-gray-600">Community & Growth</p>
+                        </div>
                     </div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            <span class="text-sm">One-on-one migration coaching</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            <span class="text-sm">Advanced AI with predictions</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            <span class="text-sm">Priority 24/7 support</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            <span class="text-sm">Exclusive opportunities</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-3"></i>
-                            <span class="text-sm">VIP travel coordination</span>
-                        </li>
-                    </ul>
-                    <button class="w-full bg-emerald-600 text-white py-3 rounded-lg hover:bg-emerald-700 transition">Start Now</button>
                 </div>
-            </div>
-            
-            <div class="text-center mt-8">
-                <p class="text-gray-600 text-sm">All plans include our <strong>Visa Success Guarantee</strong> and scam protection</p>
             </div>
         </section>
-        
-        <!-- Why Choose JustJapa -->
-        <section class="mb-20" id="features">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Why JustJapa is Different</h2>
-                <p class="text-gray-600 max-w-3xl mx-auto">Unlike traditional migration services that only handle pieces of your journey, we're your complete migration ecosystem</p>
-            </div>
-            
-            <!-- Comparison Table -->
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
-                <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x">
-                    <div class="p-8 text-center bg-red-50">
-                        <h3 class="text-xl font-bold text-red-600 mb-4">❌ Traditional Migration</h3>
-                        <ul class="space-y-3 text-sm text-gray-600">
-                            <li>Scam agents and unreliable services</li>
-                            <li>Information scattered across platforms</li>
-                            <li>High failure rates due to poor preparation</li>
-                            <li>Hidden costs and surprise fees</li>
-                            <li>Poor support when you need help</li>
-                            <li>One-size-fits-all generic advice</li>
-                        </ul>
-                    </div>
-                    <div class="p-8 text-center bg-green-50">
-                        <h3 class="text-xl font-bold text-green-600 mb-4">✅ JustJapa Solution</h3>
-                        <ul class="space-y-3 text-sm text-gray-600">
-                            <li>AI-verified agents with escrow protection</li>
-                            <li>Single source of truth with AI guidance</li>
-                            <li>Success guarantee with money-back policy</li>
-                            <li>Transparent pricing with no hidden costs</li>
-                            <li>24/7 AI + human support</li>
-                            <li>AI-personalized journey for each user</li>
-                        </ul>
-                    </div>
-                    <div class="p-8 text-center bg-blue-50">
-                        <h3 class="text-xl font-bold text-blue-600 mb-4">🚀 Our Advantage</h3>
-                        <ul class="space-y-3 text-sm text-gray-600">
-                            <li><strong>85%</strong> visa success rate</li>
-                            <li><strong>500+</strong> vetted agents</li>
-                            <li><strong>24/7</strong> AI assistance</li>
-                            <li><strong>8 phases</strong> complete coverage</li>
-                            <li><strong>$50M+</strong> in escrow protection</li>
-                            <li><strong>100%</strong> scam protection</li>
-                        </ul>
+
+        <!-- Main Content -->
+        <main class="container mx-auto px-4 py-12">
+            <!-- Dashboard Preview -->
+            <section class="mb-20">
+                <div class="overflow-hidden rounded-xl bg-white shadow-lg">
+                    <nav class="flex border-b">
+                        <button
+                            class="border-b-2 border-blue-600 px-6 py-3 font-medium text-blue-600"
+                        >
+                            Dashboard
+                        </button>
+                        <button class="px-6 py-3 text-gray-600 hover:text-blue-600">
+                            Documents
+                        </button>
+                        <button class="px-6 py-3 text-gray-600 hover:text-blue-600">Agents</button>
+                        <button class="px-6 py-3 text-gray-600 hover:text-blue-600">Roadmap</button>
+                        <button class="px-6 py-3 text-gray-600 hover:text-blue-600">
+                            Community
+                        </button>
+                        <button class="px-6 py-3 text-gray-600 hover:text-blue-600">Refunds</button>
+                    </nav>
+
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+                            <!-- Migration Progress -->
+                            <div class="rounded-lg bg-gray-50 p-6 lg:col-span-2">
+                                <h2 class="mb-4 text-xl font-semibold">Your Migration Progress</h2>
+                                <div class="space-y-6">
+                                    <!-- Progress Steps -->
+                                    <div class="relative">
+                                        <div class="mb-2 flex justify-between">
+                                            <span class="text-sm font-medium text-blue-600"
+                                                >Phase 1: Preparation</span
+                                            >
+                                            <span class="text-sm font-medium text-green-600"
+                                                >65% Complete</span
+                                            >
+                                        </div>
+                                        <div class="h-2.5 w-full rounded-full bg-gray-200">
+                                            <div
+                                                class="h-2.5 rounded-full bg-blue-600"
+                                                style="width: 65%"
+                                            ></div>
+                                        </div>
+
+                                        <div class="mt-6 space-y-8">
+                                            <div class="timeline-item relative pl-8">
+                                                <div
+                                                    class="absolute -left-8 top-0 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-white"
+                                                >
+                                                    <i class="fas fa-check text-xs"></i>
+                                                </div>
+                                                <h3 class="font-medium">Initial Consultation</h3>
+                                                <p class="text-sm text-gray-600">
+                                                    Completed with Agent Maria G.
+                                                </p>
+                                            </div>
+
+                                            <div class="timeline-item relative pl-8">
+                                                <div
+                                                    class="absolute -left-8 top-0 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-white"
+                                                >
+                                                    2
+                                                </div>
+                                                <h3 class="font-medium">Document Verification</h3>
+                                                <p class="text-sm text-gray-600">
+                                                    Pending your passport upload
+                                                </p>
+                                                <button
+                                                    class="mt-2 text-sm text-blue-600 hover:text-blue-800"
+                                                >
+                                                    Upload Now
+                                                </button>
+                                            </div>
+
+                                            <div class="timeline-item relative pl-8">
+                                                <div
+                                                    class="absolute -left-8 top-0 flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 text-gray-600"
+                                                >
+                                                    3
+                                                </div>
+                                                <h3 class="font-medium">Application Submission</h3>
+                                                <p class="text-sm text-gray-500">Upcoming step</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Agent Match -->
+                            <div class="rounded-lg bg-gray-50 p-6">
+                                <h2 class="mb-4 text-xl font-semibold">Your Migration Agent</h2>
+                                <div class="mb-4 rounded-lg bg-white p-4 shadow-sm">
+                                    <div class="mb-3 flex items-center space-x-4">
+                                        <img
+                                            src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9d10f665-a1ae-4d91-8237-c2153925a716.png"
+                                            alt="Portrait of Maria Gonzales, licensed migration agent with 8 years experience specializing in Canadian immigration"
+                                            class="h-12 w-12 rounded-full"
+                                        />
+                                        <div>
+                                            <h3 class="font-medium">Maria Gonzales</h3>
+                                            <p class="text-sm text-gray-600">
+                                                Licensed Agent - Canada Specialist
+                                            </p>
+                                            <div class="mt-1 flex items-center">
+                                                <div class="flex text-amber-400">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                </div>
+                                                <span class="ml-1 text-xs text-gray-600"
+                                                    >4.7 (128 reviews)</span
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3 flex space-x-2">
+                                        <span
+                                            class="inline-block rounded bg-blue-100 px-2 py-1 text-xs font-medium text-blue-800"
+                                            >Express Entry</span
+                                        >
+                                        <span
+                                            class="inline-block rounded bg-blue-100 px-2 py-1 text-xs font-medium text-blue-800"
+                                            >Student Visa</span
+                                        >
+                                    </div>
+                                    <button
+                                        class="mt-4 w-full rounded-lg bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
+                                    >
+                                        Message Agent
+                                    </button>
+                                </div>
+
+                                <h3 class="mb-3 mt-6 text-lg font-medium">Next Steps</h3>
+                                <ul class="space-y-3">
+                                    <li class="flex items-center space-x-3">
+                                        <div
+                                            class="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-green-600"
+                                        >
+                                            <i class="fas fa-file-alt text-xs"></i>
+                                        </div>
+                                        <span>Complete document checklist</span>
+                                    </li>
+                                    <li class="flex items-center space-x-3">
+                                        <div
+                                            class="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-blue-600"
+                                        >
+                                            <i class="fas fa-video text-xs"></i>
+                                        </div>
+                                        <span>Schedule next consultation</span>
+                                    </li>
+                                    <li class="flex items-center space-x-3">
+                                        <div
+                                            class="flex h-6 w-6 items-center justify-center rounded-full bg-purple-100 text-purple-600"
+                                        >
+                                            <i class="fas fa-search-dollar text-xs"></i>
+                                        </div>
+                                        <span>Compare financial options</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Complete Ecosystem Phases -->
+                        <h2 class="mb-8 mt-12 text-center text-3xl font-bold">
+                            The Complete Migration Ecosystem
+                        </h2>
+                        <p class="mx-auto mb-12 max-w-3xl text-center text-gray-600">
+                            8 comprehensive phases covering every aspect of your migration journey -
+                            from initial planning to successful settlement and community
+                            integration.
+                        </p>
+
+                        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+                            <!-- Phase 1: Planning & Discovery -->
+                            <div class="phase-card rounded-xl p-6">
+                                <div
+                                    class="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-blue-100 text-blue-600"
+                                >
+                                    <i class="fas fa-compass text-2xl"></i>
+                                </div>
+                                <h3 class="mb-3 text-xl font-semibold text-blue-600">
+                                    Phase 1: Discovery
+                                </h3>
+                                <h4 class="mb-2 font-medium">Migration Planning</h4>
+                                <ul class="mb-4 space-y-1 text-sm text-gray-600">
+                                    <li>• Smart Migration Wizard</li>
+                                    <li>• Country Intelligence Engine</li>
+                                    <li>• AI Roadmap Builder</li>
+                                    <li>• Budget & Timeline Planning</li>
+                                </ul>
+                                <button
+                                    class="text-sm font-medium text-blue-600 hover:text-blue-800"
+                                >
+                                    Explore Phase →
+                                </button>
+                            </div>
+
+                            <!-- Phase 2: Document Preparation -->
+                            <div class="phase-card rounded-xl p-6">
+                                <div
+                                    class="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-green-100 text-green-600"
+                                >
+                                    <i class="fas fa-file-check text-2xl"></i>
+                                </div>
+                                <h3 class="mb-3 text-xl font-semibold text-green-600">
+                                    Phase 2: Documents
+                                </h3>
+                                <h4 class="mb-2 font-medium">Quality Assurance</h4>
+                                <ul class="mb-4 space-y-1 text-sm text-gray-600">
+                                    <li>• Document Quality Checker</li>
+                                    <li>• Template Library & Guides</li>
+                                    <li>• AI Verification System</li>
+                                    <li>• Translation & Notarization</li>
+                                </ul>
+                                <button
+                                    class="text-sm font-medium text-green-600 hover:text-green-800"
+                                >
+                                    Explore Phase →
+                                </button>
+                            </div>
+
+                            <!-- Phase 3: Visa Applications -->
+                            <div class="phase-card rounded-xl p-6">
+                                <div
+                                    class="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-purple-100 text-purple-600"
+                                >
+                                    <i class="fas fa-passport text-2xl"></i>
+                                </div>
+                                <h3 class="mb-3 text-xl font-semibold text-purple-600">
+                                    Phase 3: Visa Apps
+                                </h3>
+                                <h4 class="mb-2 font-medium">Expert Network</h4>
+                                <ul class="mb-4 space-y-1 text-sm text-gray-600">
+                                    <li>• Visa Application Suite</li>
+                                    <li>• Agent Marketplace</li>
+                                    <li>• Success Guarantee</li>
+                                    <li>• Interview Preparation</li>
+                                </ul>
+                                <button
+                                    class="text-sm font-medium text-purple-600 hover:text-purple-800"
+                                >
+                                    Explore Phase →
+                                </button>
+                            </div>
+
+                            <!-- Phase 4: Travel & Logistics -->
+                            <div class="phase-card rounded-xl p-6">
+                                <div
+                                    class="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-yellow-100 text-yellow-600"
+                                >
+                                    <i class="fas fa-plane text-2xl"></i>
+                                </div>
+                                <h3 class="mb-3 text-xl font-semibold text-yellow-600">
+                                    Phase 4: Travel
+                                </h3>
+                                <h4 class="mb-2 font-medium">Logistics & Booking</h4>
+                                <ul class="mb-4 space-y-1 text-sm text-gray-600">
+                                    <li>• Smart Flight Search</li>
+                                    <li>• Travel Insurance</li>
+                                    <li>• Accommodation Booking</li>
+                                    <li>• Airport Assistance</li>
+                                </ul>
+                                <button
+                                    class="text-sm font-medium text-yellow-600 hover:text-yellow-800"
+                                >
+                                    Explore Phase →
+                                </button>
+                            </div>
+
+                            <!-- Phase 5: Opportunities -->
+                            <div class="phase-card rounded-xl p-6">
+                                <div
+                                    class="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600"
+                                >
+                                    <i class="fas fa-briefcase text-2xl"></i>
+                                </div>
+                                <h3 class="mb-3 text-xl font-semibold text-indigo-600">
+                                    Phase 5: Opportunities
+                                </h3>
+                                <h4 class="mb-2 font-medium">Jobs & Growth</h4>
+                                <ul class="mb-4 space-y-1 text-sm text-gray-600">
+                                    <li>• Global Jobs Board</li>
+                                    <li>• Scholarship Database</li>
+                                    <li>• Skills Development</li>
+                                    <li>• Gig Economy Access</li>
+                                </ul>
+                                <button
+                                    class="text-sm font-medium text-indigo-600 hover:text-indigo-800"
+                                >
+                                    Explore Phase →
+                                </button>
+                            </div>
+
+                            <!-- Phase 6: Community -->
+                            <div class="phase-card rounded-xl p-6">
+                                <div
+                                    class="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-pink-100 text-pink-600"
+                                >
+                                    <i class="fas fa-users text-2xl"></i>
+                                </div>
+                                <h3 class="mb-3 text-xl font-semibold text-pink-600">
+                                    Phase 6: Community
+                                </h3>
+                                <h4 class="mb-2 font-medium">Support Network</h4>
+                                <ul class="mb-4 space-y-1 text-sm text-gray-600">
+                                    <li>• Diaspora Network</li>
+                                    <li>• Mentorship Matching</li>
+                                    <li>• Peer Marketplace</li>
+                                    <li>• Cultural Integration</li>
+                                </ul>
+                                <button
+                                    class="text-sm font-medium text-pink-600 hover:text-pink-800"
+                                >
+                                    Explore Phase →
+                                </button>
+                            </div>
+
+                            <!-- Phase 7: Financial Services -->
+                            <div class="phase-card rounded-xl p-6">
+                                <div
+                                    class="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600"
+                                >
+                                    <i class="fas fa-dollar-sign text-2xl"></i>
+                                </div>
+                                <h3 class="mb-3 text-xl font-semibold text-emerald-600">
+                                    Phase 7: Financial
+                                </h3>
+                                <h4 class="mb-2 font-medium">Money & Security</h4>
+                                <ul class="mb-4 space-y-1 text-sm text-gray-600">
+                                    <li>• Money Transfers</li>
+                                    <li>• Proof of Funds</li>
+                                    <li>• Fund My Japa</li>
+                                    <li>• Escrow Protection</li>
+                                </ul>
+                                <button
+                                    class="text-sm font-medium text-emerald-600 hover:text-emerald-800"
+                                >
+                                    Explore Phase →
+                                </button>
+                            </div>
+
+                            <!-- Phase 8: AI & Mobile -->
+                            <div class="phase-card rounded-xl p-6">
+                                <div
+                                    class="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-orange-100 text-orange-600"
+                                >
+                                    <i class="fas fa-robot text-2xl"></i>
+                                </div>
+                                <h3 class="mb-3 text-xl font-semibold text-orange-600">
+                                    Phase 8: AI Platform
+                                </h3>
+                                <h4 class="mb-2 font-medium">Intelligence & Mobile</h4>
+                                <ul class="mb-4 space-y-1 text-sm text-gray-600">
+                                    <li>• 24/7 AI Assistant</li>
+                                    <li>• Predictive Analytics</li>
+                                    <li>• Mobile-First Platform</li>
+                                    <li>• Voice Commands</li>
+                                </ul>
+                                <button
+                                    class="text-sm font-medium text-orange-600 hover:text-orange-800"
+                                >
+                                    Explore Phase →
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Smart Agent Matching -->
-                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+            </section>
+
+            <!-- Pricing Section -->
+            <section class="mb-20 rounded-2xl bg-gray-50 p-8">
+                <div class="mb-12 text-center">
+                    <h2 class="mb-4 text-3xl font-bold">Three Clear Paths to Success</h2>
+                    <p class="mx-auto max-w-2xl text-gray-600">
+                        Choose the option that best fits your needs and budget
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+                    <!-- DIY Option -->
+                    <div
+                        class="pricing-card rounded-xl border border-gray-200 bg-white p-8 transition-all duration-300 hover:border-blue-500"
+                    >
+                        <div class="mb-6 text-center">
+                            <div
+                                class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100"
+                            >
+                                <i class="fas fa-user-graduate text-2xl text-blue-600"></i>
+                            </div>
+                            <h3 class="mb-2 text-2xl font-bold">DIY with AI</h3>
+                            <p class="mb-4 text-gray-600">
+                                Perfect for confident, budget-conscious migrants
+                            </p>
+                            <div class="text-4xl font-bold text-blue-600">₦100K - ₦500K</div>
+                            <p class="text-sm text-gray-500">One-time fee (excluding Visa fees)</p>
+                        </div>
+                        <ul class="mb-8 space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3 text-green-500"></i>
+                                <span class="text-sm">Full AI Migration Assistant</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3 text-green-500"></i>
+                                <span class="text-sm">Document templates & verification</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3 text-green-500"></i>
+                                <span class="text-sm">Step-by-step guided workflows</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3 text-green-500"></i>
+                                <span class="text-sm">Community support</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3 text-green-500"></i>
+                                <span class="text-sm">Basic visa guarantee</span>
+                            </li>
+                        </ul>
+                        <button
+                            class="w-full rounded-lg bg-blue-600 py-3 text-white transition hover:bg-blue-700"
+                        >
+                            Get Started
+                        </button>
+                    </div>
+
+                    <!-- Full Service Option -->
+                    <div
+                        class="pricing-card relative scale-105 transform rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 p-8 text-white"
+                    >
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 transform">
+                            <span
+                                class="rounded-full bg-yellow-400 px-4 py-1 text-sm font-medium text-yellow-900"
+                                >MOST POPULAR</span
+                            >
+                        </div>
+                        <div class="mb-6 text-center">
+                            <div
+                                class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white bg-opacity-20"
+                            >
+                                <i class="fas fa-crown text-2xl text-yellow-300"></i>
+                            </div>
+                            <h3 class="mb-2 text-2xl font-bold">Full Service</h3>
+                            <p class="mb-4 text-blue-100">
+                                Complete white-glove migration experience
+                            </p>
+                            <div class="text-4xl font-bold">₦1M - ₦10M</div>
+                            <p class="text-sm text-blue-200">One-time fee</p>
+                        </div>
+                        <ul class="mb-8 space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3 text-green-400"></i>
+                                <span class="text-sm">Everything in DIY Option</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3 text-green-400"></i>
+                                <span class="text-sm">Dedicated licensed agent</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3 text-green-400"></i>
+                                <span class="text-sm">Agent handles all paperwork</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3 text-green-400"></i>
+                                <span class="text-sm">Full visa guarantee</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3 text-green-400"></i>
+                                <span class="text-sm">Post-arrival support</span>
+                            </li>
+                        </ul>
+                        <button
+                            class="w-full rounded-lg bg-white py-3 font-semibold text-purple-600 transition hover:bg-gray-100"
+                        >
+                            Get Expert Help
+                        </button>
+                    </div>
+
+                    <!-- Pro Subscription -->
+                    <div
+                        class="pricing-card rounded-xl border border-gray-200 bg-white p-8 transition-all duration-300 hover:border-emerald-500"
+                    >
+                        <div class="mb-6 text-center">
+                            <div
+                                class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100"
+                            >
+                                <i class="fas fa-rocket text-2xl text-emerald-600"></i>
+                            </div>
+                            <h3 class="mb-2 text-2xl font-bold">JustJapa Pro</h3>
+                            <p class="mb-4 text-gray-600">Ultimate migration experience</p>
+                            <div class="text-4xl font-bold text-emerald-600">₦100K</div>
+                            <p class="text-sm text-gray-500">/month (excluding Visa fees)</p>
+                        </div>
+                        <ul class="mb-8 space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3 text-green-500"></i>
+                                <span class="text-sm">One-on-one migration coaching</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3 text-green-500"></i>
+                                <span class="text-sm">Advanced AI with predictions</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3 text-green-500"></i>
+                                <span class="text-sm">Priority 24/7 support</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3 text-green-500"></i>
+                                <span class="text-sm">Exclusive opportunities</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3 text-green-500"></i>
+                                <span class="text-sm">VIP travel coordination</span>
+                            </li>
+                        </ul>
+                        <button
+                            class="w-full rounded-lg bg-emerald-600 py-3 text-white transition hover:bg-emerald-700"
+                        >
+                            Start Now
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <p class="text-sm text-gray-600">
+                        All plans include our <strong>Visa Success Guarantee</strong> and scam
+                        protection
+                    </p>
+                </div>
+            </section>
+
+            <!-- Why Choose JustJapa -->
+            <section class="mb-20" id="features">
+                <div class="mb-12 text-center">
+                    <h2 class="mb-4 text-3xl font-bold">Why JustJapa is Different</h2>
+                    <p class="mx-auto max-w-3xl text-gray-600">
+                        Unlike traditional migration services that only handle pieces of your
+                        journey, we're your complete migration ecosystem
+                    </p>
+                </div>
+
+                <!-- Comparison Table -->
+                <div class="mb-12 overflow-hidden rounded-2xl bg-white shadow-lg">
+                    <div class="grid grid-cols-1 divide-y md:grid-cols-3 md:divide-x md:divide-y-0">
+                        <div class="bg-red-50 p-8 text-center">
+                            <h3 class="mb-4 text-xl font-bold text-red-600">
+                                ❌ Traditional Migration
+                            </h3>
+                            <ul class="space-y-3 text-sm text-gray-600">
+                                <li>Scam agents and unreliable services</li>
+                                <li>Information scattered across platforms</li>
+                                <li>High failure rates due to poor preparation</li>
+                                <li>Hidden costs and surprise fees</li>
+                                <li>Poor support when you need help</li>
+                                <li>One-size-fits-all generic advice</li>
+                            </ul>
+                        </div>
+                        <div class="bg-green-50 p-8 text-center">
+                            <h3 class="mb-4 text-xl font-bold text-green-600">
+                                ✅ JustJapa Solution
+                            </h3>
+                            <ul class="space-y-3 text-sm text-gray-600">
+                                <li>AI-verified agents with escrow protection</li>
+                                <li>Single source of truth with AI guidance</li>
+                                <li>Success guarantee with money-back policy</li>
+                                <li>Transparent pricing with no hidden costs</li>
+                                <li>24/7 AI + human support</li>
+                                <li>AI-personalized journey for each user</li>
+                            </ul>
+                        </div>
+                        <div class="bg-blue-50 p-8 text-center">
+                            <h3 class="mb-4 text-xl font-bold text-blue-600">🚀 Our Advantage</h3>
+                            <ul class="space-y-3 text-sm text-gray-600">
+                                <li><strong>85%</strong> visa success rate</li>
+                                <li><strong>500+</strong> vetted agents</li>
+                                <li><strong>24/7</strong> AI assistance</li>
+                                <li><strong>8 phases</strong> complete coverage</li>
+                                <li><strong>$50M+</strong> in escrow protection</li>
+                                <li><strong>100%</strong> scam protection</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                    <!-- Smart Agent Matching -->
+                    <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
                             <i class="fas fa-people-arrows text-2xl"></i>
@@ -649,9 +1192,9 @@
                         </div>
                     </div>
                 </div> -->
-                
-                <!-- Money Transfer -->
-                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+
+                    <!-- Money Transfer -->
+                    <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-green-100 text-green-600 flex items-center justify-center">
                             <i class="fas fa-money-bill-transfer text-2xl"></i>
@@ -668,9 +1211,9 @@
                         </div>
                     </div>
                 </div> -->
-                
-                <!-- AI Analytics -->
-                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+
+                    <!-- AI Analytics -->
+                    <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center">
                             <i class="fas fa-brain text-2xl"></i>
@@ -686,9 +1229,9 @@
                         </div>
                     </div>
                 </div> -->
-                
-                <!-- Diaspora Network -->
-                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+
+                    <!-- Diaspora Network -->
+                    <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center">
                             <i class="fas fa-hands-helping text-2xl"></i>
@@ -705,8 +1248,8 @@
                         </div>
                     </div>
                 </div> -->
-                <!-- Diaspora Network -->
-                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <!-- Diaspora Network -->
+                    <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
                             <i class="fas fa-briefcase text-2xl"></i>
@@ -722,8 +1265,8 @@
                         </div>
                     </div>
                 </div> -->
-                <!-- Diaspora Network -->
-                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <!-- Diaspora Network -->
+                    <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-gray-100 text-gray-600 flex items-center justify-center">
                             <i class="fas fa-graduation-cap text-2xl"></i>
@@ -739,8 +1282,8 @@
                         </div>
                     </div>
                 </div> -->
-                <!-- Diaspora Network -->
-                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <!-- Diaspora Network -->
+                    <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center">
                             <i class="fas fa-plane text-2xl"></i>
@@ -756,8 +1299,8 @@
                         </div>
                     </div>
                 </div> -->
-                <!-- Diaspora Network -->
-                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <!-- Diaspora Network -->
+                    <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-green-100 text-green-600 flex items-center justify-center">
                             <i class="fas fa-shield-alt text-2xl"></i>
@@ -773,8 +1316,8 @@
                         </div>
                     </div>
                 </div> -->
-                <!-- Diaspora Network -->
-                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <!-- Diaspora Network -->
+                    <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-red-100 text-red-600 flex items-center justify-center">
                             <i class="fas fa-map-marker-alt text-2xl"></i>
@@ -790,8 +1333,8 @@
                         </div>
                     </div>
                 </div> -->
-                <!-- Diaspora Network -->
-                <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <!-- Diaspora Network -->
+                    <!-- <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
                             <i class="fas fa-book text-2xl"></i>
@@ -807,165 +1350,300 @@
                         </div>
                     </div>
                 </div> -->
-            </div>
-        </section>
-        
-        <!-- Mobile App Preview -->
-        <section class="bg-gray-50 rounded-2xl p-8 mb-20">
-            <div class="flex flex-col lg:flex-row items-center">
-                <div class="lg:w-1/2 mb-10 lg:mb-0">
-                    <h2 class="text-3xl font-bold mb-4">Mobile App Coming Soon</h2>
-                    <p class="text-gray-600 mb-6">All migration tools in your pocket with push notifications for important deadlines and updates.</p>
-                    
-                    <div class="space-y-4 mb-8">
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-4">
-                                <i class="fas fa-bell"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium">Real-Time Updates</h4>
-                                <p class="text-sm text-gray-600">Application status, document requests, and deadline reminders</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center mr-4">
-                                <i class="fas fa-comments"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium">Instant Messaging</h4>
-                                <p class="text-sm text-gray-600">Chat with your agent and community anytime</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mr-4">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium">Document Scanning</h4>
-                                <p class="text-sm text-gray-600">Upload and verify documents with your phone camera</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="flex space-x-4">
-                        <button class="flex items-center px-4 py-2 bg-gray-900 text-white rounded-lg">
-                            <i class="fab fa-apple mr-2"></i>
-                            <div class="text-left">
-                                <div class="text-xs">Download on the</div>
-                                <div class="text-lg font-semibold">App Store</div>
-                            </div>
-                        </button>
-                        
-                        <button class="flex items-center px-4 py-2 bg-gray-900 text-white rounded-lg">
-                            <i class="fab fa-google-play mr-2"></i>
-                            <div class="text-left">
-                                <div class="text-xs">Get it on</div>
-                                <div class="text-lg font-semibold">Google Play</div>
-                            </div>
-                        </button>
-                    </div>
                 </div>
-                
-                <div class="lg:w-1/2 flex justify-center">
-                    <div class="relative">
-                        <div class="absolute inset-0 bg-blue-500 rounded-3xl opacity-10 blur-xl"></div>
-                        <div class="relative flex space-x-6">
-                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5479c362-2a80-408a-b697-3e64de5f3966.png" alt="Mobile app screen showing dashboard with migration progress timeline and document checklist" class="h-96 w-auto rounded-xl shadow-xl">
-                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0f31053e-f002-45c7-bcd3-54af0d4870b7.png" alt="Mobile app screen showing agent chat interface with message history and file sharing options" class="h-96 w-auto rounded-xl shadow-xl hidden md:block">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+            </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <div class="flex items-center space-x-2">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/563526f1-f11b-46fc-a61f-d77a9032dfc9.png" alt="JustJapa - Nigerian Migration Platform logo" class="h-10">
-                        <h1 class="text-xl font-bold text-gray-800">JustJapa</h1>
-                    </div>
-                    <p class="mb-4">Your trusted partner for smart, seamless global migration.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 class="text-white font-medium mb-4">Services</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white">Agent Matching</a></li>
-                        <li><a href="#" class="hover:text-white">Visa Application</a></li>
-                        <li><a href="#" class="hover:text-white">Document Services</a></li>
-                        <li><a href="#" class="hover:text-white">Financial Tools</a></li>
-                        <li><a href="#" class="hover:text-white">Success Coaching</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-white font-medium mb-4">Resources</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white">Country Guides</a></li>
-                        <li><a href="#" class="hover:text-white">Webinars</a></li>
-                        <li><a href="#" class="hover:text-white">Blog</a></li>
-                        <li><a href="#" class="hover:text-white">FAQ</a></li>
-                        <li><a href="#" class="hover:text-white">Community</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-white font-medium mb-4">Company</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white">About Us</a></li>
-                        <li><a href="#" class="hover:text-white">Careers</a></li>
-                        <li><a href="#" class="hover:text-white">Press</a></li>
-                        <li><a href="#" class="hover:text-white">Contact</a></li>
-                        <li><a href="#" class="hover:text-white">Terms & Privacy</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
-                <p>© 2025 WOM Inc. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+            <!-- Mobile App Preview -->
+            <section class="mb-20 rounded-2xl bg-gray-50 p-8">
+                <div class="flex flex-col items-center lg:flex-row">
+                    <div class="mb-10 lg:mb-0 lg:w-1/2">
+                        <h2 class="mb-4 text-3xl font-bold">Mobile App Coming Soon</h2>
+                        <p class="mb-6 text-gray-600">
+                            All migration tools in your pocket with push notifications for important
+                            deadlines and updates.
+                        </p>
 
-    <script>
-        // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuButton = document.querySelector('.md\\:hidden');
-            const mobileMenu = document.querySelector('.md\\:flex');
-            
-            menuButton.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-            });
-            
-            // Tooltips for dashboard
-            const tooltips = document.querySelectorAll('[data-tooltip]');
-            tooltips.forEach(tooltip => {
-                tooltip.addEventListener('mouseenter', function() {
-                    const tooltipText = this.getAttribute('data-tooltip');
-                    const tooltipEl = document.createElement('div');
-                    tooltipEl.className = 'absolute z-10 p-2 text-xs text-white bg-gray-900 rounded shadow-lg top-full mt-1';
-                    tooltipEl.textContent = tooltipText;
-                    this.appendChild(tooltipEl);
-                    
-                    this.addEventListener('mouseleave', function() {
-                        tooltipEl.remove();
+                        <div class="mb-8 space-y-4">
+                            <div class="flex items-center">
+                                <div
+                                    class="mr-4 flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600"
+                                >
+                                    <i class="fas fa-bell"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Real-Time Updates</h4>
+                                    <p class="text-sm text-gray-600">
+                                        Application status, document requests, and deadline
+                                        reminders
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center">
+                                <div
+                                    class="mr-4 flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-600"
+                                >
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Instant Messaging</h4>
+                                    <p class="text-sm text-gray-600">
+                                        Chat with your agent and community anytime
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center">
+                                <div
+                                    class="mr-4 flex h-10 w-10 items-center justify-center rounded-full bg-purple-100 text-purple-600"
+                                >
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Document Scanning</h4>
+                                    <p class="text-sm text-gray-600">
+                                        Upload and verify documents with your phone camera
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex space-x-4">
+                            <button
+                                class="flex items-center rounded-lg bg-gray-900 px-4 py-2 text-white"
+                            >
+                                <i class="fab fa-apple mr-2"></i>
+                                <div class="text-left">
+                                    <div class="text-xs">Download on the</div>
+                                    <div class="text-lg font-semibold">App Store</div>
+                                </div>
+                            </button>
+
+                            <button
+                                class="flex items-center rounded-lg bg-gray-900 px-4 py-2 text-white"
+                            >
+                                <i class="fab fa-google-play mr-2"></i>
+                                <div class="text-left">
+                                    <div class="text-xs">Get it on</div>
+                                    <div class="text-lg font-semibold">Google Play</div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center lg:w-1/2">
+                        <div class="relative">
+                            <div
+                                class="absolute inset-0 rounded-3xl bg-blue-500 opacity-10 blur-xl"
+                            ></div>
+                            <div class="relative flex space-x-6">
+                                <img
+                                    src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5479c362-2a80-408a-b697-3e64de5f3966.png"
+                                    alt="Mobile app screen showing dashboard with migration progress timeline and document checklist"
+                                    class="h-96 w-auto rounded-xl shadow-xl"
+                                />
+                                <img
+                                    src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0f31053e-f002-45c7-bcd3-54af0d4870b7.png"
+                                    alt="Mobile app screen showing agent chat interface with message history and file sharing options"
+                                    class="hidden h-96 w-auto rounded-xl shadow-xl md:block"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 py-12 text-gray-300">
+            <div class="container mx-auto px-4">
+                <div class="mb-8 grid grid-cols-1 gap-8 md:grid-cols-4">
+                    <div>
+                        <div class="logo-container space-x-2">
+                            <img
+                                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/563526f1-f11b-46fc-a61f-d77a9032dfc9.png"
+                                alt="JustJapa - Nigerian Migration Platform logo"
+                                class="h-10"
+                            />
+                            <h1 class="text-xl font-bold text-white">JustJapa</h1>
+
+                            <!-- Star Elements -->
+                            <svg
+                                class="star-1"
+                                viewBox="0 0 47 47"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <polygon
+                                    class="fil0"
+                                    points="23.5,0 29.1,17.8 47,17.8 32.9,28.8 38.6,46.6 23.5,35.6 8.4,46.6 14.1,28.8 0,17.8 17.9,17.8"
+                                />
+                            </svg>
+
+                            <svg
+                                class="star-2"
+                                viewBox="0 0 47 47"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <polygon
+                                    class="fil0"
+                                    points="23.5,0 29.1,17.8 47,17.8 32.9,28.8 38.6,46.6 23.5,35.6 8.4,46.6 14.1,28.8 0,17.8 17.9,17.8"
+                                />
+                            </svg>
+
+                            <svg
+                                class="star-3"
+                                viewBox="0 0 47 47"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <polygon
+                                    class="fil0"
+                                    points="23.5,0 29.1,17.8 47,17.8 32.9,28.8 38.6,46.6 23.5,35.6 8.4,46.6 14.1,28.8 0,17.8 17.9,17.8"
+                                />
+                            </svg>
+
+                            <svg
+                                class="star-4"
+                                viewBox="0 0 47 47"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <polygon
+                                    class="fil0"
+                                    points="23.5,0 29.1,17.8 47,17.8 32.9,28.8 38.6,46.6 23.5,35.6 8.4,46.6 14.1,28.8 0,17.8 17.9,17.8"
+                                />
+                            </svg>
+
+                            <svg
+                                class="star-5"
+                                viewBox="0 0 47 47"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <polygon
+                                    class="fil0"
+                                    points="23.5,0 29.1,17.8 47,17.8 32.9,28.8 38.6,46.6 23.5,35.6 8.4,46.6 14.1,28.8 0,17.8 17.9,17.8"
+                                />
+                            </svg>
+
+                            <svg
+                                class="star-6"
+                                viewBox="0 0 47 47"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <polygon
+                                    class="fil0"
+                                    points="23.5,0 29.1,17.8 47,17.8 32.9,28.8 38.6,46.6 23.5,35.6 8.4,46.6 14.1,28.8 0,17.8 17.9,17.8"
+                                />
+                            </svg>
+                        </div>
+                        <p class="mb-4">
+                            Your trusted partner for smart, seamless global migration.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="social-icon facebook">
+                                <div class="layer">
+                                    <span><i class="fab fa-facebook-f"></i></span>
+                                    <span><i class="fab fa-facebook-f"></i></span>
+                                    <span><i class="fab fa-facebook-f"></i></span>
+                                    <span><i class="fab fa-facebook-f"></i></span>
+                                    <span><i class="fab fa-facebook-f"></i></span>
+                                </div>
+                            </a>
+                            <a href="#" class="social-icon twitter">
+                                <div class="layer">
+                                    <span><i class="fab fa-twitter"></i></span>
+                                    <span><i class="fab fa-twitter"></i></span>
+                                    <span><i class="fab fa-twitter"></i></span>
+                                    <span><i class="fab fa-twitter"></i></span>
+                                    <span><i class="fab fa-twitter"></i></span>
+                                </div>
+                            </a>
+                            <a href="#" class="social-icon linkedin">
+                                <div class="layer">
+                                    <span><i class="fab fa-linkedin-in"></i></span>
+                                    <span><i class="fab fa-linkedin-in"></i></span>
+                                    <span><i class="fab fa-linkedin-in"></i></span>
+                                    <span><i class="fab fa-linkedin-in"></i></span>
+                                    <span><i class="fab fa-linkedin-in"></i></span>
+                                </div>
+                            </a>
+                            <a href="#" class="social-icon instagram">
+                                <div class="layer">
+                                    <span><i class="fab fa-instagram"></i></span>
+                                    <span><i class="fab fa-instagram"></i></span>
+                                    <span><i class="fab fa-instagram"></i></span>
+                                    <span><i class="fab fa-instagram"></i></span>
+                                    <span><i class="fab fa-instagram"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="mb-4 font-medium text-white">Services</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-white">Agent Matching</a></li>
+                            <li><a href="#" class="hover:text-white">Visa Application</a></li>
+                            <li><a href="#" class="hover:text-white">Document Services</a></li>
+                            <li><a href="#" class="hover:text-white">Financial Tools</a></li>
+                            <li><a href="#" class="hover:text-white">Success Coaching</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="mb-4 font-medium text-white">Resources</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-white">Country Guides</a></li>
+                            <li><a href="#" class="hover:text-white">Webinars</a></li>
+                            <li><a href="#" class="hover:text-white">Blog</a></li>
+                            <li><a href="#" class="hover:text-white">FAQ</a></li>
+                            <li><a href="#" class="hover:text-white">Community</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="mb-4 font-medium text-white">Company</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-white">About Us</a></li>
+                            <li><a href="#" class="hover:text-white">Careers</a></li>
+                            <li><a href="#" class="hover:text-white">Press</a></li>
+                            <li><a href="#" class="hover:text-white">Contact</a></li>
+                            <li><a href="#" class="hover:text-white">Terms & Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
+                    <p>© 2025 WOM Inc. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Mobile menu toggle
+            document.addEventListener("DOMContentLoaded", function () {
+                const menuButton = document.querySelector(".md\\:hidden");
+                const mobileMenu = document.querySelector(".md\\:flex");
+
+                menuButton.addEventListener("click", function () {
+                    mobileMenu.classList.toggle("hidden");
+                });
+
+                // Tooltips for dashboard
+                const tooltips = document.querySelectorAll("[data-tooltip]");
+                tooltips.forEach((tooltip) => {
+                    tooltip.addEventListener("mouseenter", function () {
+                        const tooltipText = this.getAttribute("data-tooltip");
+                        const tooltipEl = document.createElement("div");
+                        tooltipEl.className =
+                            "absolute z-10 p-2 text-xs text-white bg-gray-900 rounded shadow-lg top-full mt-1";
+                        tooltipEl.textContent = tooltipText;
+                        this.appendChild(tooltipEl);
+
+                        this.addEventListener("mouseleave", function () {
+                            tooltipEl.remove();
+                        });
                     });
                 });
             });
-        });
-    </script>
-</body>
+        </script>
+    </body>
 </html>
-

@@ -29,15 +29,17 @@ export default function SuccessPage() {
                             </div>
 
                             <h1
-                                className='mb-8'
+                                className='mb-6 px-4 sm:mb-8'
                                 style={{
-                                    fontFamily: "DM Sans",
+                                    fontFamily: "Dm Sans",
                                     fontWeight: 700,
-                                    fontSize: "115px",
-                                    lineHeight: "106.13px",
-                                    letterSpacing: "-6%",
+                                    fontSize: "clamp(54px, 5vw, 135px)",
+                                    lineHeight: "clamp(52px, 4.5vw, 106px)",
+                                    letterSpacing: "-0.06em",
                                     color: "#000000",
                                     textAlign: "center",
+                                    wordBreak: "break-word",
+                                    hyphens: "auto",
                                 }}
                             >
                                 <span
@@ -45,9 +47,9 @@ export default function SuccessPage() {
                                         fontFamily: "Cormorant Garamond",
                                         fontWeight: 700,
                                         fontStyle: "italic",
-                                        fontSize: "115px",
-                                        lineHeight: "106.13px",
-                                        letterSpacing: "-6%",
+                                        fontSize: "clamp(54px, 5vw, 135px)",
+                                        lineHeight: "clamp(52px, 4.5vw, 106px)",
+                                        letterSpacing: "-0.06em",
                                     }}
                                 >
                                     You&apos;re
