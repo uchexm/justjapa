@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 import { HamburgerMenu } from "@/components/HamburgerMenu";
 import { JoinNowBlueButton } from "@/components/JoinNowBlueButton";
@@ -11,10 +12,19 @@ import { MobileNavigation } from "@/components/MobileNavigation";
 
 export function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const pathname = usePathname();
+    const router = useRouter();
 
     const scrollToWaitlist = () => {
         // Check if we're in the browser before accessing DOM
         if (typeof window !== "undefined") {
+            // If we're not on the home page, navigate to home with waitlist fragment
+            if (pathname !== "/") {
+                router.push("/#waitlist");
+                return;
+            }
+
+            // If we're on the home page, scroll to waitlist section
             const waitlistSection = document.getElementById("waitlist");
             if (waitlistSection) {
                 waitlistSection.scrollIntoView({ behavior: "smooth" });

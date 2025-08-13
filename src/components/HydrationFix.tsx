@@ -16,6 +16,8 @@ export function HydrationFix() {
                     "cz-shortcut-listen",
                     "data-lt-installed",
                     "spellcheck",
+                    "data-sharkid",
+                    "data-sharklabel",
                 ];
 
                 extensionAttributes.forEach((attr) => {
@@ -40,6 +42,11 @@ export function HydrationFix() {
                 "inject_video_svd",
                 "data-new-gr-c-s-check-loaded",
                 "data-gr-ext-installed",
+                "cz-shortcut-listen",
+                "data-lt-installed",
+                "spellcheck",
+                "data-sharkid",
+                "data-sharklabel",
             ],
         });
 

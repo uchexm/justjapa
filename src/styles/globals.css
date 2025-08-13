@@ -508,15 +508,19 @@ section {
 .link-hover-simple {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    padding: 4px 8px;
+    border-radius: 4px;
 }
 
 .link-hover-simple:hover {
     color: #0178ff;
-    transform: translateY(-1px);
+    transform: translateY(-1px) scale(1.05);
+    background-color: rgba(1, 120, 255, 0.1);
+    padding: 6px 12px;
 }
 
 .link-hover-simple:active {
-    transform: translateY(0);
+    transform: translateY(0) scale(1.02);
     transition-duration: 0.1s;
 }
 
