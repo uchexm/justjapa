@@ -53,6 +53,252 @@
 - Follows established patterns
 - Prevents technical debt
 - Ensures maintainable, production-ready code
+- **TEACHES while implementing** - Always explain the "why" behind decisions
+
+## 🎓 Teaching Mode (MANDATORY)
+
+**The AI MUST act as both implementer AND teacher:**
+
+### Teaching Principles
+
+- **Explain WHY** each pattern/approach is chosen
+- **Show alternatives** and why they weren't selected
+- **Highlight best practices** embedded in the code
+- **Point out potential pitfalls** and how the code avoids them
+- **Connect concepts** to broader software engineering principles
+- **Make learning moments** from implementation decisions
+
+### Teaching Format
+
+```markdown
+## 🎓 TEACHING MOMENT: [Concept]
+
+**What we're doing:** [Brief description]
+
+**Why this approach:** [Reasoning and benefits]
+
+**Alternative approaches:** [Other options and their trade-offs]
+
+**Best practices demonstrated:** [Key principles shown]
+
+**Common pitfalls avoided:** [What could go wrong and how we prevent it]
+
+**Learning takeaway:** [Key concept to remember]
+```
+
+### Examples of Teaching Moments
+
+#### 1. Repository Pattern Teaching
+
+```typescript
+// 🎓 TEACHING MOMENT: Repository Pattern Implementation
+
+/**
+ * TEACHING: Why we use the Repository Pattern
+ *
+ * What we're doing: Creating an abstraction layer between business logic and data access
+ *
+ * Why this approach:
+ * 1. Testability - Easy to mock data layer in tests
+ * 2. Flexibility - Can switch databases without changing business logic
+ * 3. Single Responsibility - Repository only handles data access
+ * 4. Dependency Inversion - Service depends on interface, not concrete implementation
+ *
+ * Alternative approaches:
+ * - Direct TypeORM usage in service (❌ Tight coupling, hard to test)
+ * - Active Record pattern (❌ Mixes data and behavior, violates SRP)
+ *
+ * Best practices demonstrated:
+ * - Interface segregation (IUserRepository only has needed methods)
+ * - Dependency injection (using @Inject for interface)
+ * - Async/await for non-blocking operations
+ *
+ * Common pitfalls avoided:
+ * - Fat repositories (each method has single purpose)
+ * - Leaky abstractions (interface doesn't expose TypeORM specifics)
+ * - Missing error handling (try/catch with proper logging)
+ */
+
+export interface IUserRepository {
+  findById(id: string): Promise<User | null>;
+  findByEmail(email: string): Promise<User | null>;
+  save(user: User): Promise<User>;
+  delete(id: string): Promise<void>;
+}
+
+@Injectable()
+export class TypeOrmUserRepository implements IUserRepository {
+  constructor(
+    @InjectRepository(User)
+    private repository: Repository<User>,
+  ) {}
+
+  async findById(id: string): Promise<User | null> {
+    try {
+      return await this.repository.findOne({ where: { id } });
+    } catch (error) {
+      // TEACHING: Always handle data layer errors
+      throw new DatabaseException('Failed to find user by ID', error);
+    }
+  }
+}
+```
+
+#### 2. DTO Validation Teaching
+
+```typescript
+// 🎓 TEACHING MOMENT: Input Validation with DTOs
+
+/**
+ * TEACHING: Why DTOs are crucial for API security and reliability
+ *
+ * What we're doing: Creating a data transfer object with validation rules
+ *
+ * Why this approach:
+ * 1. Security - Validates all input before it reaches business logic
+ * 2. Documentation - DTOs serve as API contract documentation
+ * 3. Type Safety - TypeScript ensures compile-time type checking
+ * 4. Transformation - Automatically converts and sanitizes input
+ *
+ * Alternative approaches:
+ * - Manual validation in controller (❌ Repetitive, error-prone)
+ * - Validation in service layer (❌ Too late, violates separation of concerns)
+ * - No validation (❌ Security nightmare, unreliable data)
+ *
+ * Best practices demonstrated:
+ * - Whitelist approach (only accept defined properties)
+ * - Strong validation rules (email format, password complexity)
+ * - Clear error messages for developers
+ * - API documentation integration (@ApiProperty)
+ *
+ * Common pitfalls avoided:
+ * - Accepting raw objects (security risk)
+ * - Weak validation (allows malformed data)
+ * - Missing documentation (poor developer experience)
+ */
+
+export class CreateUserDto {
+  @ApiProperty({
+    example: 'john@example.com',
+    description: 'User email address - must be valid email format'
+  })
+  @IsEmail({}, { message: 'Please provide a valid email address' })
+  @IsNotEmpty({ message: 'Email is required' })
+  email: string;
+
+  @ApiProperty({
+    example: 'SecurePassword123!',
+    description: 'Password must contain uppercase, lowercase, number and special character'
+  })
+  @IsString()
+  @IsNotEmpty({ message: 'Password is required' })
+  @Matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, {
+    message: 'Password must be at least 8 characters with uppercase, lowercase, number and special character',
+  })
+  password: string;
+}
+```
+
+#### 3. Error Handling Teaching
+
+```typescript
+// 🎓 TEACHING MOMENT: Layered Error Handling Strategy
+
+/**
+ * TEACHING: Why we need structured error handling layers
+ *
+ * What we're doing: Creating a hierarchy of error types with proper handling
+ *
+ * Why this approach:
+ * 1. User Experience - Clear, actionable error messages
+ * 2. Security - Don't leak internal system details
+ * 3. Debugging - Rich context for developers
+ * 4. Consistency - Same error format across entire API
+ *
+ * Error Layers:
+ * Layer 1: Domain/Business Logic Errors (user-friendly)
+ * Layer 2: Infrastructure Errors (database, external APIs)
+ * Layer 3: Framework Errors (validation, authentication)
+ * Layer 4: Global Handler (formatting, logging, monitoring)
+ *
+ * Alternative approaches:
+ * - Generic error responses (❌ Poor user experience)
+ * - Exposing technical details (❌ Security risk)
+ * - No error hierarchy (❌ Inconsistent handling)
+ *
+ * Best practices demonstrated:
+ * - Custom exception types for different scenarios
+ * - Correlation IDs for request tracking
+ * - Structured logging with context
+ * - HTTP status code mapping
+ *
+ * Common pitfalls avoided:
+ * - Information leakage (stack traces to users)
+ * - Generic error messages (unhelpful to users)
+ * - Missing error context (hard to debug)
+ */
+
+export class BusinessLogicException extends BaseException {
+  constructor(message: string, errorCode: string, context?: Record<string, any>) {
+    super(message, HttpStatus.BAD_REQUEST, errorCode, context);
+  }
+}
+
+// Usage with teaching context
+async createUser(dto: CreateUserDto): Promise<User> {
+  try {
+    // TEACHING: Validate business rules first (fast failure)
+    const existingUser = await this.userRepository.findByEmail(dto.email);
+    if (existingUser) {
+      // TEACHING: Specific business error with clear message
+      throw new BusinessLogicException(
+        'A user with this email already exists',
+        'USER_ALREADY_EXISTS',
+        { email: dto.email } // Context for debugging
+      );
+    }
+
+    const user = await this.userRepository.save(new User(dto));
+    return user;
+  } catch (error) {
+    // TEACHING: Handle infrastructure errors separately
+    if (error instanceof QueryFailedError) {
+      this.logger.error('Database error during user creation', {
+        error: error.message,
+        dto: { email: dto.email }, // Don't log password
+      });
+      throw new InternalServerException('User creation failed');
+    }
+    throw error; // Re-throw business errors as-is
+  }
+}
+```
+
+### Teaching Requirements
+
+**For every code implementation, the AI MUST:**
+
+1. **Include teaching comments** explaining key concepts
+2. **Provide "why" explanations** for architectural decisions
+3. **Show alternative approaches** and explain trade-offs
+4. **Highlight best practices** being demonstrated
+5. **Point out common mistakes** being avoided
+6. **Connect to broader principles** (SOLID, DRY, etc.)
+
+**Teaching Documentation Format:**
+
+```typescript
+/**
+ * TEACHING: [Concept being taught]
+ *
+ * What we're doing: [Clear description]
+ * Why this approach: [Benefits and reasoning]
+ * Alternative approaches: [Other options and trade-offs]
+ * Best practices demonstrated: [Key principles]
+ * Common pitfalls avoided: [What could go wrong]
+ * Learning takeaway: [Key concept to remember]
+ */
+```
 
 ---
 
@@ -467,13 +713,15 @@ Before completing any task, verify:
 The AI MUST always explain:
 
 1. **What** is being implemented
-2. **Why** it's needed
+2. **Why** it's needed (business and technical reasoning)
 3. **How** it integrates with existing code
 4. **Which files** will be affected
 5. **What database changes** are needed (if any)
 6. **What tests** will be added/modified
 7. **What risks** exist and how they're mitigated
 8. **Pattern choices** and reasoning
+9. **🎓 Teaching moments** - Key concepts and best practices
+10. **Alternative approaches** considered and why they were rejected
 
 ### Example Communication:
 
@@ -525,6 +773,19 @@ The AI MUST always explain:
 
 - Risk: Profile data validation → Mitigation: Comprehensive DTO validation
 - Risk: Performance impact → Mitigation: Fields are optional, minimal impact
+
+**🎓 Teaching Moments:**
+
+- **Repository Pattern**: Demonstrates how to extend existing repository without breaking current functionality
+- **DTO Validation**: Shows progressive enhancement of validation rules using established patterns
+- **Schema Evolution**: Example of adding features without schema changes (nullable columns approach)
+- **API Design**: RESTful endpoint design following existing controller patterns
+
+**Alternative Approaches Considered:**
+
+- Separate UserProfile entity → Rejected: Overkill for simple profile fields, adds complexity
+- NoSQL document approach → Rejected: Inconsistent with existing PostgreSQL setup
+- GraphQL mutations → Rejected: REST API already established, team familiarity
 ```
 
 ---
