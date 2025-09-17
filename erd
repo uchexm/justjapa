@@ -1,0 +1,154 @@
+```mermaid
+erDiagram
+    permissions {
+        UUID PK NOT_NULL id
+        TIMESTAMPTZ NOT_NULL createdAt
+        TIMESTAMPTZ NOT_NULL updatedAt
+        TIMESTAMPTZ deletedAt
+        FUNCTION STRING() { [NATIVE CODE] } NOT_NULL name
+        FUNCTION STRING() { [NATIVE CODE] } description
+        FUNCTION STRING() { [NATIVE CODE] } resource
+        FUNCTION STRING() { [NATIVE CODE] } action
+        FUNCTION BOOLEAN() { [NATIVE CODE] } NOT_NULL isActive
+    }
+
+    roles {
+        UUID PK NOT_NULL id
+        TIMESTAMPTZ NOT_NULL createdAt
+        TIMESTAMPTZ NOT_NULL updatedAt
+        TIMESTAMPTZ deletedAt
+        FUNCTION STRING() { [NATIVE CODE] } NOT_NULL name
+        FUNCTION STRING() { [NATIVE CODE] } description
+        FUNCTION BOOLEAN() { [NATIVE CODE] } NOT_NULL isActive
+    }
+
+    user_profiles {
+        UUID PK NOT_NULL id
+        TIMESTAMPTZ NOT_NULL createdAt
+        TIMESTAMPTZ NOT_NULL updatedAt
+        TIMESTAMPTZ deletedAt
+        UUID NOT_NULL userId
+        ENUM NOT_NULL userType "client|agent|consultant|admin|super_admin"
+        ENUM NOT_NULL status "pending_email_verification|pending_admin_approval|active|suspended|locked|deactivated|under_review|rejected"
+        ENUM NOT_NULL approvalStatus "not_required|pending|approved|rejected|under_review"
+        UUID approvedBy
+        TIMESTAMPTZ approvedAt
+        TEXT approvalNotes
+        UUID rejectedBy
+        TIMESTAMPTZ rejectedAt
+        TEXT rejectionReason
+        ENUM NOT_NULL documentVerificationStatus "not_required|pending|verified|rejected|expired"
+        JSONB NOT_NULL submittedDocuments
+        UUID documentsVerifiedBy
+        TIMESTAMPTZ documentsVerifiedAt
+        TEXT documentVerificationNotes
+        FUNCTION STRING() { [NATIVE CODE] } licenseNumber
+        FUNCTION STRING() { [NATIVE CODE] } organization
+        FUNCTION STRING() { [NATIVE CODE] } specialization
+        INTEGER NOT_NULL yearsOfExperience
+        JSONB NOT_NULL certifications
+        JSONB NOT_NULL languages
+        FUNCTION STRING() { [NATIVE CODE] } alternativeEmail
+        FUNCTION STRING() { [NATIVE CODE] } whatsappNumber
+        FUNCTION STRING() { [NATIVE CODE] } telegramHandle
+        FUNCTION STRING() { [NATIVE CODE] } linkedinProfile
+        FUNCTION STRING() { [NATIVE CODE] } country
+        FUNCTION STRING() { [NATIVE CODE] } state
+        FUNCTION STRING() { [NATIVE CODE] } city
+        FUNCTION STRING() { [NATIVE CODE] } address
+        FUNCTION STRING() { [NATIVE CODE] } postalCode
+        FUNCTION STRING() { [NATIVE CODE] } businessName
+        FUNCTION STRING() { [NATIVE CODE] } businessRegistrationNumber
+        FUNCTION STRING() { [NATIVE CODE] } businessAddress
+        FUNCTION STRING() { [NATIVE CODE] } businessPhone
+        FUNCTION STRING() { [NATIVE CODE] } businessEmail
+        FUNCTION STRING() { [NATIVE CODE] } businessWebsite
+        FUNCTION BOOLEAN() { [NATIVE CODE] } NOT_NULL emailNotifications
+        FUNCTION BOOLEAN() { [NATIVE CODE] } NOT_NULL smsNotifications
+        FUNCTION BOOLEAN() { [NATIVE CODE] } NOT_NULL marketingEmails
+        JSONB NOT_NULL preferences
+        INTEGER NOT_NULL profileCompleteness
+        TIMESTAMPTZ lastProfileUpdate
+        TIMESTAMPTZ lastActivityAt
+    }
+
+    users {
+        UUID PK NOT_NULL id
+        TIMESTAMPTZ NOT_NULL createdAt
+        TIMESTAMPTZ NOT_NULL updatedAt
+        TIMESTAMPTZ deletedAt
+        FUNCTION STRING() { [NATIVE CODE] } NOT_NULL email
+        FUNCTION STRING() { [NATIVE CODE] } NOT_NULL firstName
+        FUNCTION STRING() { [NATIVE CODE] } NOT_NULL lastName
+        FUNCTION STRING() { [NATIVE CODE] } NOT_NULL passwordHash
+        FUNCTION BOOLEAN() { [NATIVE CODE] } NOT_NULL isActive
+        ENUM NOT_NULL type "client|agent|consultant|admin|super_admin"
+        FUNCTION STRING() { [NATIVE CODE] } emailVerificationToken
+        FUNCTION STRING() { [NATIVE CODE] } passwordResetToken
+        TIMESTAMPTZ passwordResetExpires
+        TIMESTAMPTZ emailVerifiedAt
+        TIMESTAMPTZ lastLoginAt
+        FUNCTION NUMBER() { [NATIVE CODE] } NOT_NULL failedLoginAttempts
+        TIMESTAMPTZ lockedAt
+        FUNCTION STRING() { [NATIVE CODE] } lockReason
+        TIMESTAMPTZ lastFailedLoginAt
+        FUNCTION STRING() { [NATIVE CODE] } phoneNumber
+        FUNCTION STRING() { [NATIVE CODE] } avatar
+        FUNCTION STRING() { [NATIVE CODE] } suspendedBy
+        TIMESTAMPTZ suspendedAt
+        FUNCTION STRING() { [NATIVE CODE] } suspensionReason
+        TIMESTAMPTZ suspensionExpiresAt
+    }
+
+    security_events {
+        UUID PK NOT_NULL id
+        TIMESTAMPTZ NOT_NULL createdAt
+        TIMESTAMPTZ NOT_NULL updatedAt
+        TIMESTAMPTZ deletedAt
+        ENUM NOT_NULL eventType "LOGIN_SUCCESS|LOGIN_FAILED|LOGIN_FAILED_EMAIL_NOT_FOUND|LOGIN_FAILED_INVALID_PASSWORD|LOGIN_FAILED_EMAIL_NOT_VERIFIED|LOGIN_FAILED_ACCOUNT_LOCKED|LOGIN_FAILED_ACCOUNT_SUSPENDED|ACCOUNT_LOCKED|ACCOUNT_UNLOCKED|PASSWORD_CHANGED|PASSWORD_RESET_REQUESTED|PASSWORD_RESET_COMPLETED|EMAIL_VERIFIED|TOKEN_REFRESH|LOGOUT|LOGOUT_ALL_DEVICES|SUSPICIOUS_LOGIN|RATE_LIMITED|BRUTE_FORCE_DETECTED|SESSION_EXPIRED|CONCURRENT_SESSION_LIMIT_EXCEEDED|ADMIN_ACTION_USER_APPROVED|ADMIN_ACTION_USER_SUSPENDED|ADMIN_ACTION_USER_UNLOCKED|PROFILE_UPDATED|PASSWORD_CHANGE_FAILED|DOCUMENT_UPLOADED|SETTINGS_CHANGED|ACCOUNT_DEACTIVATED"
+        ENUM NOT_NULL severity "LOW|MEDIUM|HIGH|CRITICAL"
+        UUID userId
+        INET ipAddress
+        TEXT userAgent
+        TEXT description
+        JSONB NOT_NULL metadata
+        FUNCTION BOOLEAN() { [NATIVE CODE] } NOT_NULL resolved
+        TEXT resolvedBy
+        TIMESTAMPTZ resolvedAt
+        TEXT resolvedNotes
+    }
+
+    access_tokens {
+        UUID PK NOT_NULL id
+        TIMESTAMPTZ NOT_NULL createdAt
+        TIMESTAMPTZ NOT_NULL updatedAt
+        TIMESTAMPTZ deletedAt
+        UUID NOT_NULL user_id
+        FUNCTION STRING() { [NATIVE CODE] } NOT_NULL token_hash
+        ENUM NOT_NULL token_type "access|refresh|reset|verify"
+        ENUM scope "auth|reset_password|email_verification"
+        TIMESTAMPTZ NOT_NULL expires_at
+        TIMESTAMPTZ revoked_at
+        JSONB metadata
+        TIMESTAMPTZ last_used_at
+        FUNCTION STRING() { [NATIVE CODE] } ip_address
+        TEXT user_agent
+    }
+
+    role_permissions {
+        UUID PK NOT_NULL roleId
+        UUID PK NOT_NULL permissionId
+    }
+
+    user_roles {
+        UUID PK NOT_NULL userId
+        UUID PK NOT_NULL roleId
+    }
+
+    roles ||--|| permissions : "permissions"
+    user_profiles ||--|| users : "user"
+    users ||--|| roles : "roles"
+    security_events ||--|| users : "user"
+    access_tokens ||--|| users : "user"
+
+```
